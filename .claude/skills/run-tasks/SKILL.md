@@ -14,7 +14,7 @@ You are processing the build task queue for the Lionz Roofing website.
 
 ## Token limit / resume behavior
 
-This skill is designed to survive context/token limit interruptions. After each task completes, the task is immediately removed from `tasks.md` and saved. If the session hits a token limit or is interrupted for any reason, simply run `/run-tasks` again — it will pull the latest `tasks.md` and resume from the remaining tasks. Already-built pages are never rebuilt.
+This skill is designed to survive context/token limit interruptions. After each task completes, the built page and updated `tasks.md` are immediately pushed to GitHub. If the session hits a token limit or is interrupted for any reason, simply run `/run-tasks` again — it pulls the latest state from GitHub first, then resumes from the remaining tasks. Already-built pages are on GitHub and are never lost or rebuilt.
 
 If `tasks/tasks.md` does not exist when the skill starts, it means all tasks were already completed in a previous session. Report this and stop cleanly.
 
@@ -83,9 +83,19 @@ After `build-page` completes successfully:
 
 2. Remove this task's entry from `tasks/tasks.md` and save the file. The file should contain only the remaining unprocessed tasks after this edit. If this was the last task, the file will be empty.
 
-   This is the critical step — it ensures that if a token limit interruption happens right after this task, re-running `/run-tasks` will not reprocess it.
+### 3d — Push to GitHub immediately after each task
 
-Report: "✓ Task complete — <Page Name> built. Remaining: <N> tasks."
+This is critical for token limit safety. After every completed task, push all changes to GitHub right away — do not wait until the end:
+
+```
+git add -A
+git commit -m "Build <Page Name> page"
+git push origin HEAD
+```
+
+This ensures that if a token limit hits before all tasks are done, the already-built pages are safely stored on GitHub. When the skill resumes and runs `git pull`, it gets back exactly where it left off with no lost work.
+
+Report: "✓ Task complete — <Page Name> built and pushed. Remaining: <N> tasks."
 
 ---
 
@@ -126,6 +136,7 @@ If any tasks were skipped, list them under "Skipped:" with the reason.
 ## If interrupted mid-session
 
 If the session ends due to a token limit before all tasks are finished:
-- Already-completed tasks have been removed from `tasks.md`
-- The next `/run-tasks` run will pull the updated `tasks.md` and continue from where it left off
-- No work is lost or duplicated
+- Already-completed tasks have been removed from `tasks.md` and pushed to GitHub
+- The next `/run-tasks` run pulls from GitHub first, getting the updated `tasks.md` and all previously built pages
+- Processing continues from the remaining tasks only
+- No work is lost, overwritten, or duplicated
