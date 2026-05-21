@@ -6,6 +6,12 @@ user-invocable: true
 
 You are processing the build task queue for the Lionz Roofing website.
 
+## IMPORTANT — Always pull from GitHub first
+
+**Before doing anything else, always run `git pull` to get the latest files from GitHub.** This is mandatory every time the skill runs — even on resume after a token limit. Never skip this step. The tasks.md and screenshots must always be fetched fresh from the remote repo before processing begins.
+
+---
+
 ## Token limit / resume behavior
 
 This skill is designed to survive context/token limit interruptions. After each task completes, the task is immediately removed from `tasks.md` and saved. If the session hits a token limit or is interrupted for any reason, simply run `/run-tasks` again — it will pull the latest `tasks.md` and resume from the remaining tasks. Already-built pages are never rebuilt.
@@ -14,14 +20,18 @@ If `tasks/tasks.md` does not exist when the skill starts, it means all tasks wer
 
 ---
 
-## Step 1 — Pull latest from GitHub
+## Step 1 — Pull latest from GitHub (MANDATORY FIRST STEP)
 
-Run:
+This must always be the very first action. Run:
 ```
 git pull
 ```
 
-Confirm that `tasks/tasks.md` exists after the pull. If it does not exist, stop and tell the user: "No tasks.md found in tasks/. All tasks may already be complete."
+Do not read any files, do not parse any tasks, do not do anything else until this pull completes successfully.
+
+If the pull fails, stop and tell the user: "Git pull failed — please check your connection and remote config before retrying."
+
+After the pull, confirm that `tasks/tasks.md` exists. If it does not exist, stop and tell the user: "No tasks.md found in tasks/. All tasks may already be complete."
 
 ---
 
