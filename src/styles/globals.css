@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-lionzDark bg-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-lionzGold text-lionzNavy font-bold rounded-xl px-8 py-4 hover:brightness-90 transition-all duration-200 inline-block;
+  }
+
+  .btn-outline {
+    @apply border-2 border-lionzGold text-lionzGold font-bold rounded-xl px-8 py-4 hover:bg-lionzGold hover:text-lionzNavy transition-all duration-200 inline-block;
+  }
+
+  .section-padding {
+    @apply py-16 px-4 md:px-8 lg:px-16;
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
