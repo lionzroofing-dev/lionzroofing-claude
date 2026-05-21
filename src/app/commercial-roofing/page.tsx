@@ -31,19 +31,24 @@ const MATERIAL_BULLETS = [
   "Roof Coatings & Sealants",
 ];
 
-const SERVICE_LOCATIONS = ["Miami", "Hollywood", "Boca Raton", "Fort Lauderdale", "Palm Beach"];
+const SERVICE_LOCATIONS = [
+  "Miami",
+  "Hollywood",
+  "Boca Raton",
+  "Fort Lauderdale",
+  "Palm Beach",
+];
 
 export default function CommercialRoofingPage() {
   return (
     <>
       <Header />
       <main>
-
         {/* ── 1. Hero Banner ── */}
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/commercial-roofing/hero.png"
+            src="/images/commercial-roofing/hero.jpg"
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
@@ -64,7 +69,7 @@ export default function CommercialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/commercial-roofing/intro.png"
+                src="/images/commercial-roofing/intro.webp"
                 alt="Commercial Roofing"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -73,24 +78,26 @@ export default function CommercialRoofingPage() {
             {/* Right content */}
             <div>
               <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
-                <MapPin size={13} className="text-lionzGold" /> Commercial Roofing
+                <MapPin size={13} className="text-lionzGold" /> Commercial
+                Roofing
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark leading-tight mb-5">
                 <span className="text-lionzGold">Commercial</span> Roofing
               </h2>
               <p className="text-gray-600 text-base leading-relaxed mb-4">
-                Lionz Roofing delivers reliable commercial roofing solutions across
-                Florida, combining expert workmanship with a strong commitment to
-                long-term performance. From storm damage repairs to full commercial
-                roof replacements, we provide tailored systems designed to protect
-                your property against Florida&apos;s demanding weather conditions.
+                Lionz Roofing delivers reliable commercial roofing solutions
+                across Florida, combining expert workmanship with a strong
+                commitment to long-term performance. From storm damage repairs
+                to full commercial roof replacements, we provide tailored
+                systems designed to protect your property against Florida&apos;s
+                demanding weather conditions.
               </p>
               <p className="text-gray-600 text-base leading-relaxed mb-8">
-                We utilize high-quality materials and proven installation methods to
-                ensure durability, energy efficiency, and minimal disruption to your
-                operations. With clear communication and consistent project oversight,
-                Lionz Roofing delivers dependable commercial roofing results — on
-                time and with confidence.
+                We utilize high-quality materials and proven installation
+                methods to ensure durability, energy efficiency, and minimal
+                disruption to your operations. With clear communication and
+                consistent project oversight, Lionz Roofing delivers dependable
+                commercial roofing results — on time and with confidence.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button href="/residential-roofing" variant="primary">
@@ -109,7 +116,8 @@ export default function CommercialRoofingPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 border border-lionzGold text-white text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-2">
-                <CheckCircle size={13} className="text-lionzGold" /> Services Include
+                <CheckCircle size={13} className="text-lionzGold" /> Services
+                Include
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -119,7 +127,9 @@ export default function CommercialRoofingPage() {
                   className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3"
                 >
                   <CheckCircle size={16} className="text-lionzGold shrink-0" />
-                  <span className="text-white font-semibold text-sm">{item}</span>
+                  <span className="text-white font-semibold text-sm">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
@@ -140,20 +150,26 @@ export default function CommercialRoofingPage() {
                 buildings require roofing materials that can stand up to intense
                 heat, heavy rainfall, and hurricane-force winds. Our commercial
                 roofs are designed to provide maximum protection and energy
-                efficiency. We install and maintain a range of systems, including
-                TPO, PVC, modified bitumen, metal roofing, and built-up roofing —
-                all tailored to the specific needs of your property and industry
-                requirements.
+                efficiency. We install and maintain a range of systems,
+                including TPO, PVC, modified bitumen, metal roofing, and
+                built-up roofing — all tailored to the specific needs of your
+                property and industry requirements.
               </p>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
-                From energy-saving reflective roofs to durable metal systems, our
-                commercial roofing solutions balance performance and
+                From energy-saving reflective roofs to durable metal systems,
+                our commercial roofing solutions balance performance and
                 cost-effectiveness to protect your business year-round.
               </p>
               <ul className="space-y-2 mb-8">
                 {MATERIAL_BULLETS.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-gray-600 text-sm">
-                    <CheckCircle size={16} className="text-lionzGold shrink-0 mt-0.5" />
+                  <li
+                    key={b}
+                    className="flex items-start gap-2 text-gray-600 text-sm"
+                  >
+                    <CheckCircle
+                      size={16}
+                      className="text-lionzGold shrink-0 mt-0.5"
+                    />
                     {b}
                   </li>
                 ))}
@@ -164,7 +180,7 @@ export default function CommercialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/commercial-roofing/materials.png"
+                src="/images/commercial-roofing/services-across.webp"
                 alt="Commercial Roofing Materials"
                 className="w-full h-[520px] object-cover rounded-3xl"
               />
@@ -206,7 +222,7 @@ export default function CommercialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/commercial-roofing/why-choose.png"
+                src="/images/commercial-roofing/why-choose.webp"
                 alt="Why Florida Businesses Choose Lionz Roofing"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -220,18 +236,18 @@ export default function CommercialRoofingPage() {
               </h2>
               <p className="text-gray-600 text-base leading-relaxed mb-4">
                 Lionz Roofing is the trusted commercial roofing partner across
-                Southeast Florida. Our experienced team understands the demands of
-                commercial properties — from office buildings and warehouses to
-                retail centers and industrial facilities. We bring deep knowledge
-                of local building codes, weather patterns, and material innovations
-                to every project.
+                Southeast Florida. Our experienced team understands the demands
+                of commercial properties — from office buildings and warehouses
+                to retail centers and industrial facilities. We bring deep
+                knowledge of local building codes, weather patterns, and
+                material innovations to every project.
               </p>
               <p className="text-gray-600 text-base leading-relaxed mb-4">
                 Our commitment to clear communication, fast turnaround, and
-                superior workmanship means your roofing project stays on schedule
-                and on budget. Whether you need a routine inspection or a full roof
-                replacement, Lionz Roofing delivers dependable solutions that
-                minimize disruption and maximize protection.
+                superior workmanship means your roofing project stays on
+                schedule and on budget. Whether you need a routine inspection or
+                a full roof replacement, Lionz Roofing delivers dependable
+                solutions that minimize disruption and maximize protection.
               </p>
               <p className="text-gray-600 text-base leading-relaxed">
                 When you work with us, you&apos;re choosing a partner that
@@ -253,7 +269,6 @@ export default function CommercialRoofingPage() {
 
         {/* ── 8. Related Articles ── */}
         <BlogPreview />
-
       </main>
       <Footer />
     </>

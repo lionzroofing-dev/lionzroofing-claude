@@ -23,17 +23,41 @@ const SERVICES_INCLUDE = [
 ];
 
 const MATERIALS = [
-  { name: "Asphalt Shingle Roof", image: "/images/residential-roofing/material-asphalt.png" },
-  { name: "Flat Roofing",          image: "/images/residential-roofing/material-flat.png" },
-  { name: "Metal Roofing",         image: "/images/residential-roofing/material-metal.png" },
-  { name: "Wood Roofing",          image: "/images/residential-roofing/material-wood.png" },
-  { name: "Tile Roofing",          image: "/images/residential-roofing/material-tile.png" },
-  { name: "Slate Roofing",         image: "/images/residential-roofing/material-slate.png" },
+  {
+    name: "Asphalt Shingle Roof",
+    image: "/images/residential-roofing/material-asphalt.jpg",
+  },
+  {
+    name: "Flat Roofing",
+    image: "/images/residential-roofing/material-flat.webp",
+  },
+  {
+    name: "Metal Roofing",
+    image: "/images/residential-roofing/material-metal.webp",
+  },
+  {
+    name: "Wood Roofing",
+    image: "/images/residential-roofing/material-wood.webp",
+  },
+  {
+    name: "Tile Roofing",
+    image: "/images/residential-roofing/material-tile.jpg",
+  },
+  {
+    name: "Slate Roofing",
+    image: "/images/residential-roofing/material-slate.webp",
+  },
 ];
 
 const LOCATIONS = [
-  "Miami", "Fort Lauderdale", "West Palm Beach", "Palm Beach",
-  "Hollywood", "Boca Raton", "Pompano Beach", "Coral Springs",
+  "Miami",
+  "Fort Lauderdale",
+  "West Palm Beach",
+  "Palm Beach",
+  "Hollywood",
+  "Boca Raton",
+  "Pompano Beach",
+  "Coral Springs",
 ];
 
 const MATERIAL_BULLETS = [
@@ -50,16 +74,15 @@ export default function ResidentialRoofingPage() {
     <>
       <Header />
       <main>
-
         {/* ── 1. Hero Banner ── */}
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/residential-roofing/hero.png"
+            src="/images/residential-roofing/hero.jpg"
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "center 40%" }}
+            style={{ objectPosition: "center 80%" }}
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
@@ -76,7 +99,7 @@ export default function ResidentialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/residential-roofing/intro.png"
+                src="/images/residential-roofing/intro.webp"
                 alt="Residential Roofing"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -85,7 +108,8 @@ export default function ResidentialRoofingPage() {
             {/* Right content */}
             <div>
               <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
-                <MapPin size={13} className="text-lionzGold" /> Residential Roofing
+                <MapPin size={13} className="text-lionzGold" /> Residential
+                Roofing
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark leading-tight mb-5">
                 Trusted Residential Roofing Across{" "}
@@ -95,16 +119,17 @@ export default function ResidentialRoofingPage() {
                 At Lionz Roofing, we specialize in residential roofing services
                 across Florida, combining skilled craftsmanship with quality
                 materials to give you years of peace of mind. From minor repairs
-                to full roof replacements, our team of professionals is committed
-                to protecting your home from Florida&apos;s weather extremes.
+                to full roof replacements, our team of professionals is
+                committed to protecting your home from Florida&apos;s weather
+                extremes.
               </p>
               <p className="text-gray-600 text-base leading-relaxed mb-8">
                 We use high-quality materials and proven techniques to ensure
-                lasting performance and complete customer satisfaction — not just
-                quick fixes, but dependable results. Whether you&apos;re in need of
-                shingle roofing, flat, or metal systems, trust Lionz Roofing to
-                deliver durable, energy-efficient solutions that enhance your
-                home&apos;s curb appeal.
+                lasting performance and complete customer satisfaction — not
+                just quick fixes, but dependable results. Whether you&apos;re in
+                need of shingle roofing, flat, or metal systems, trust Lionz
+                Roofing to deliver durable, energy-efficient solutions that
+                enhance your home&apos;s curb appeal.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button href="/contact" variant="primary">
@@ -123,7 +148,8 @@ export default function ResidentialRoofingPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">
-                <CheckCircle size={13} className="text-lionzGold" /> What We Offer
+                <CheckCircle size={13} className="text-lionzGold" /> What We
+                Offer
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark">
                 Services <span className="text-lionzGold">Include</span>
@@ -136,7 +162,9 @@ export default function ResidentialRoofingPage() {
                   className="flex items-center gap-3 bg-white rounded-xl px-5 py-4 shadow-sm border border-gray-100"
                 >
                   <CheckCircle size={18} className="text-lionzGold shrink-0" />
-                  <span className="text-lionzNavy font-semibold text-sm">{item}</span>
+                  <span className="text-lionzNavy font-semibold text-sm">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
@@ -156,16 +184,23 @@ export default function ResidentialRoofingPage() {
                 <span className="text-lionzGold">Southeast Florida</span>
               </h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
-                At Lionz Roofing, we understand that Southeast Florida&apos;s unique
-                climate demands residential roofing materials that can stand up to
-                intense sun, heavy rains, and hurricane-force winds. That&apos;s why
-                we carry materials specifically designed to ensure your home
-                withstands South Florida&apos;s toughest conditions.
+                At Lionz Roofing, we understand that Southeast Florida&apos;s
+                unique climate demands residential roofing materials that can
+                stand up to intense sun, heavy rains, and hurricane-force winds.
+                That&apos;s why we carry materials specifically designed to
+                ensure your home withstands South Florida&apos;s toughest
+                conditions.
               </p>
               <ul className="space-y-2 mb-8">
                 {MATERIAL_BULLETS.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-gray-600 text-sm">
-                    <CheckCircle size={16} className="text-lionzGold shrink-0 mt-0.5" />
+                  <li
+                    key={b}
+                    className="flex items-start gap-2 text-gray-600 text-sm"
+                  >
+                    <CheckCircle
+                      size={16}
+                      className="text-lionzGold shrink-0 mt-0.5"
+                    />
                     {b}
                   </li>
                 ))}
@@ -178,7 +213,10 @@ export default function ResidentialRoofingPage() {
             {/* Right — materials grid */}
             <div className="grid grid-cols-2 gap-4">
               {MATERIALS.map((m) => (
-                <div key={m.name} className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+                <div
+                  key={m.name}
+                  className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 group"
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={m.image}
@@ -212,8 +250,8 @@ export default function ResidentialRoofingPage() {
                 <span className="text-lionzGold">Southeast Florida</span>
               </h2>
               <p className="text-gray-400 text-sm mt-4 leading-relaxed">
-                We offer Residential Roofing Services in{" "}
-                {LOCATIONS.join(", ")}, and beyond.
+                We offer Residential Roofing Services in {LOCATIONS.join(", ")},
+                and beyond.
               </p>
               <div className="flex flex-wrap gap-2 mt-6">
                 {LOCATIONS.map((loc) => (
@@ -222,7 +260,9 @@ export default function ResidentialRoofingPage() {
                     className="flex items-center gap-1.5 border border-lionzGold/40 hover:border-lionzGold rounded-full px-4 py-2 transition-colors"
                   >
                     <MapPin size={12} className="text-lionzGold shrink-0" />
-                    <span className="text-white text-sm font-semibold">{loc}</span>
+                    <span className="text-white text-sm font-semibold">
+                      {loc}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -246,10 +286,10 @@ export default function ResidentialRoofingPage() {
                 appeal for years to come.
               </p>
               <p className="text-gray-300 text-base leading-relaxed mb-8">
-                We&apos;ve earned a reputation for delivering top quality that speaks
-                for itself. When you choose Lionz Roofing, you&apos;re choosing
-                expertise, reliability, and the peace of mind that comes with
-                knowing your home is in the right hands.
+                We&apos;ve earned a reputation for delivering top quality that
+                speaks for itself. When you choose Lionz Roofing, you&apos;re
+                choosing expertise, reliability, and the peace of mind that
+                comes with knowing your home is in the right hands.
               </p>
               <a
                 href="tel:(954) 637-6835"
@@ -274,7 +314,6 @@ export default function ResidentialRoofingPage() {
 
         {/* ── 7. Related Articles ── */}
         <BlogPreview />
-
       </main>
       <Footer />
     </>
