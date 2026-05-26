@@ -11,7 +11,7 @@ import Button from "@/components/Button";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Roofing Services",
+  title: "Roofing Services in Fort Lauderdale & South Florida",
   description:
     "Roof repair, replacement, residential and commercial roofing services in Fort Lauderdale and South Florida. Storm damage and roof inspections available.",
 };
@@ -70,10 +70,10 @@ export default function ServicesPage() {
                 <MapPin size={13} className="text-lionzGold" /> Licensed,
                 Insured &amp; Reliable
               </div>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-lionzDark leading-tight mb-5">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark leading-tight mb-5">
                 Reliable Roofing Services You Can Count On Across{" "}
                 <span className="text-lionzGold">Southeast Florida</span>
-              </h1>
+              </h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
                 From minor repairs to complete roof replacements, Lionz Roofing
                 provides expert roofing solutions tailored to Southeastern

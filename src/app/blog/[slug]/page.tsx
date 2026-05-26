@@ -79,6 +79,12 @@ export async function generateStaticParams() {
   return blogContent.map((post) => ({ slug: post.slug }));
 }
 
+const MONTH_NUM: Record<string, string> = {
+  January: "01", February: "02", March: "03", April: "04",
+  May: "05", June: "06", July: "07", August: "08",
+  September: "09", October: "10", November: "11", December: "12",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -104,6 +110,30 @@ export default async function BlogPostPage({
 
   if (!post || !meta || post.blocks.length === 0) notFound();
 
+  const datePublished = `2026-${MONTH_NUM[meta.month] ?? "01"}-${meta.day.padStart(2, "0")}`;
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.heroTitle,
+    description: post.metaDescription,
+    image: `https://lionzroofing.com${meta.image}`,
+    datePublished,
+    dateModified: datePublished,
+    author: {
+      "@type": "Person",
+      name: "Ari",
+      worksFor: { "@type": "Organization", name: "Lionz Roofing" },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Lionz Roofing",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://lionzroofing.com/images/logo/logo.webp",
+      },
+    },
+  };
+
   const currentIndex = blogPosts.findIndex((p) => p.slug === slug);
   const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
   const nextPost =
@@ -119,6 +149,10 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <Header />
       <main>
         {/* Hero — cover image with dark overlay */}
@@ -142,28 +176,28 @@ export default async function BlogPostPage({
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Article */}
             <article className="flex-1 min-w-0">
-              {/* Date */}
-              <div className="flex items-center gap-2 text-gray-400 text-sm mb-6">
-                <Calendar size={15} className="text-lionzGold" />
-                <span>
+              {/* Date + Author */}
+              <div className="flex items-center gap-4 text-gray-400 text-sm mb-6 flex-wrap">
+                <span className="flex items-center gap-2">
+                  <Calendar size={15} className="text-lionzGold" />
                   {meta.month} {meta.day}, 2026
                 </span>
+                <span className="flex items-center gap-1">
+                  <span className="text-gray-300">By</span>
+                  <span className="font-semibold text-lionzNavy">Ari, Lionz Roofing</span>
+                </span>
               </div>
-              {/* Post H1 */}
-              <h2 className="text-2xl md:text-3xl font-extrabold text-lionzDark mb-8 leading-tight">
-                {post.heroTitle}
-              </h2>
               {/* Content blocks */}
               <div>
                 {post.blocks.map((block, i) => {
                   if (block.type === "h2") {
                     return (
-                      <h3
+                      <h2
                         key={i}
                         className="text-lg md:text-xl font-extrabold text-lionzDark mt-8 mb-3"
                       >
                         {block.text}
-                      </h3>
+                      </h2>
                     );
                   }
                   if (block.type === "p") {

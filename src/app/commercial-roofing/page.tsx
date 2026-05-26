@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
 import BlogPreview from "@/components/BlogPreview";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Commercial Roofing In Southeast Florida",
@@ -40,6 +41,12 @@ const SERVICE_LOCATIONS = [
 ];
 
 export default function CommercialRoofingPage() {
+  const imgs = {
+    hero:         resolveImage("commercial-roofing", "hero"),
+    intro:        resolveImage("commercial-roofing", "intro"),
+    servicesAcross: resolveImage("commercial-roofing", "services-across"),
+    whyChoose:    resolveImage("commercial-roofing", "why-choose"),
+  };
   return (
     <>
       <Header />
@@ -48,7 +55,7 @@ export default function CommercialRoofingPage() {
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/commercial-roofing/hero.jpg"
+            src={imgs.hero}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
@@ -69,7 +76,7 @@ export default function CommercialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/commercial-roofing/intro.webp"
+                src={imgs.intro}
                 alt="Commercial Roofing"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -180,7 +187,7 @@ export default function CommercialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/commercial-roofing/services-across.webp"
+                src={imgs.servicesAcross}
                 alt="Commercial Roofing Materials"
                 className="w-full h-[520px] object-cover rounded-3xl"
               />
@@ -222,7 +229,7 @@ export default function CommercialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/commercial-roofing/why-choose.webp"
+                src={imgs.whyChoose}
                 alt="Why Florida Businesses Choose Lionz Roofing"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />

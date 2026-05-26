@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
 import BlogPreview from "@/components/BlogPreview";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Residential Roofing In Southeast Florida",
@@ -22,31 +23,13 @@ const SERVICES_INCLUDE = [
   "24/7 Support",
 ];
 
-const MATERIALS = [
-  {
-    name: "Asphalt Shingle Roof",
-    image: "/images/residential-roofing/material-asphalt.jpg",
-  },
-  {
-    name: "Flat Roofing",
-    image: "/images/residential-roofing/material-flat.webp",
-  },
-  {
-    name: "Metal Roofing",
-    image: "/images/residential-roofing/material-metal.webp",
-  },
-  {
-    name: "Wood Roofing",
-    image: "/images/residential-roofing/material-wood.webp",
-  },
-  {
-    name: "Tile Roofing",
-    image: "/images/residential-roofing/material-tile.jpg",
-  },
-  {
-    name: "Slate Roofing",
-    image: "/images/residential-roofing/material-slate.webp",
-  },
+const MATERIAL_NAMES = [
+  { name: "Asphalt Shingle Roof", slot: "material-asphalt" },
+  { name: "Flat Roofing",         slot: "material-flat" },
+  { name: "Metal Roofing",        slot: "material-metal" },
+  { name: "Wood Roofing",         slot: "material-wood" },
+  { name: "Tile Roofing",         slot: "material-tile" },
+  { name: "Slate Roofing",        slot: "material-slate" },
 ];
 
 const LOCATIONS = [
@@ -70,6 +53,15 @@ const MATERIAL_BULLETS = [
 ];
 
 export default function ResidentialRoofingPage() {
+  const imgs = {
+    hero:         resolveImage("residential-roofing", "hero"),
+    intro:        resolveImage("residential-roofing", "intro"),
+    servicesAcross: resolveImage("residential-roofing", "services-across"),
+  };
+  const MATERIALS = MATERIAL_NAMES.map((m) => ({
+    name: m.name,
+    image: resolveImage("residential-roofing", m.slot),
+  }));
   return (
     <>
       <Header />
@@ -78,7 +70,7 @@ export default function ResidentialRoofingPage() {
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/residential-roofing/hero.jpg"
+            src={imgs.hero}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
@@ -99,7 +91,7 @@ export default function ResidentialRoofingPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/residential-roofing/intro.webp"
+                src={imgs.intro}
                 alt="Residential Roofing"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -240,7 +232,7 @@ export default function ResidentialRoofingPage() {
               <div className="rounded-3xl overflow-hidden mb-8">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/residential-roofing/services-across.png"
+                  src={imgs.servicesAcross}
                   alt="Residential Roofing Services Across Southeast Florida"
                   className="w-full h-[320px] object-cover rounded-3xl"
                 />

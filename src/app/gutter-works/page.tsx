@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
 import ServicesSlider from "@/components/ServicesSlider";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Gutter Works — Installation, Repair & Protection | Lionz Roofing",
@@ -35,6 +36,13 @@ const WARNING_SIGNS = [
 ];
 
 export default function GutterWorksPage() {
+  const imgs = {
+    hero:           resolveImage("gutter-works", "hero"),
+    intro:          resolveImage("gutter-works", "intro"),
+    introSecondary: resolveImage("gutter-works", "intro-secondary"),
+    benefits1:      resolveImage("gutter-works", "benefits-1"),
+    benefits2:      resolveImage("gutter-works", "benefits-2"),
+  };
   return (
     <>
       <Header />
@@ -43,7 +51,7 @@ export default function GutterWorksPage() {
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/gutter-works/hero.webp"
+            src={imgs.hero}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
@@ -64,7 +72,7 @@ export default function GutterWorksPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/gutter-works/intro.webp"
+                src={imgs.intro}
                 alt="Gutter Installation and Repair"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -98,25 +106,29 @@ export default function GutterWorksPage() {
                 are engineered for durability and long-term performance.
               </p>
 
-              {/* Feature bullets */}
-              <ul className="space-y-2 mb-8">
-                {FEATURES.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-gray-700 text-sm font-semibold">
-                    <CheckCircle size={16} className="text-lionzGold shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
-                <Button href="/about" variant="primary">
-                  More About Us
-                </Button>
-                {/* Secondary image */}
-                <div className="rounded-2xl overflow-hidden shrink-0 w-full sm:w-44 h-28">
+              {/* Feature bullets + secondary image side by side */}
+              <div className="flex items-stretch gap-4">
+                {/* Left: bordered box with bullets + button */}
+                <div className="flex-1 border border-lionzGold/40 rounded-2xl p-5 flex flex-col gap-4">
+                  <ul className="space-y-2">
+                    {FEATURES.map((f) => (
+                      <li key={f} className="flex items-center gap-2 text-gray-700 text-sm font-semibold">
+                        <CheckCircle size={16} className="text-lionzGold shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div>
+                    <Button href="/about" variant="primary">
+                      More About Us
+                    </Button>
+                  </div>
+                </div>
+                {/* Right: secondary image */}
+                <div className="rounded-2xl overflow-hidden shrink-0 w-44">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/gutter-works/intro-secondary.webp"
+                    src={imgs.introSecondary}
                     alt="Gutter Works"
                     className="w-full h-full object-cover"
                   />
@@ -173,13 +185,13 @@ export default function GutterWorksPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/gutter-works/benefits-1.webp"
+                src={imgs.benefits1}
                 alt="Gutter installation work"
                 className="w-full h-64 object-cover rounded-2xl"
               />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/gutter-works/benefits-2.webp"
+                src={imgs.benefits2}
                 alt="Roof and gutter system"
                 className="w-full h-64 object-cover rounded-2xl"
               />

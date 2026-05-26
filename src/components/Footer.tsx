@@ -73,12 +73,12 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-  { label: "Roof Repair", href: "/services#roof-repair" },
-  { label: "Roof Replacement", href: "/services#roof-replacement" },
-  { label: "Residential Roofing", href: "/services#residential-roofing" },
-  { label: "Commercial Roofing", href: "/services#commercial-roofing" },
-  { label: "Storm Damage", href: "/services#storm-damage" },
-  { label: "Roof Inspection", href: "/services#roof-inspection" },
+  { label: "Roof Repairs", href: "/roof-repairs" },
+  { label: "Roof Replacements", href: "/roofing-replacement" },
+  { label: "Residential Roofing", href: "/residential-roofing" },
+  { label: "Commercial Roofing", href: "/commercial-roofing" },
+  { label: "Gutter Works", href: "/gutter-works" },
+  { label: "Service Areas", href: "/service-areas" },
 ];
 
 export default function Footer() {

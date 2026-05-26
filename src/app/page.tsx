@@ -9,7 +9,7 @@ import ReelsSection from "@/components/ReelsSection";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Lionz Roofing | Lionz Roofing ",
+  title: "Fort Lauderdale Roofing Contractors | Lionz Roofing",
   description:
     "Fort Lauderdale's trusted roofing professionals. Roof repair, replacement, residential and commercial roofing services. Licensed, insured, free estimates.",
 };

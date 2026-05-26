@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionTitle from "@/components/SectionTitle";
 import CTASection from "@/components/CTASection";
-import { testimonials } from "@/data/testimonials";
-import { Star } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Testimonials",
@@ -15,6 +14,7 @@ export const metadata: Metadata = {
 export default function TestimonialsPage() {
   return (
     <>
+      <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
       <Header />
       <main>
         <section className="bg-lionzNavy section-padding text-center">
@@ -26,36 +26,15 @@ export default function TestimonialsPage() {
           </p>
         </section>
         <section className="section-padding bg-lionzLight">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <SectionTitle
-              label="What Clients Say"
-              title="Real Reviews From Real Customers"
+              label="Google Reviews"
+              title="See What Our Customers Are Saying"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {testimonials.map((t) => (
-                <div
-                  key={t.name}
-                  className="bg-white rounded-2xl p-7 shadow-md border border-gray-100"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className="text-lionzGold fill-lionzGold"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 leading-relaxed mb-5 text-sm">
-                    &ldquo;{t.text}&rdquo;
-                  </p>
-                  <div>
-                    <p className="text-lionzNavy font-bold">{t.name}</p>
-                    <p className="text-gray-400 text-sm">{t.location}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div
+              className="elfsight-app-74ada3ac-ad98-42a9-83f6-3e023b25ba97"
+              data-elfsight-app-lazy
+            />
           </div>
         </section>
         <CTASection />

@@ -1,5 +1,6 @@
 import { Home } from "lucide-react";
 import Button from "./Button";
+import { resolveImage } from "@/lib/resolveImage";
 
 interface CTASectionProps {
   badge?: string;
@@ -22,7 +23,7 @@ export default function CTASection({
   primaryHref = "/contact",
   secondaryLabel,
   secondaryHref = "/services",
-  bgImage = "/images/cta/cta-bg.png",
+  bgImage = resolveImage("cta", "cta-bg"),
 }: CTASectionProps) {
   return (
     <section className="relative section-padding overflow-hidden">

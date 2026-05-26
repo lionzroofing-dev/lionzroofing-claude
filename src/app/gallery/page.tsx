@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import GalleryClient from "@/components/GalleryClient";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Projects Gallery | Lionz Roofing",
@@ -20,17 +21,36 @@ function loadProjects() {
     .readdirSync(galleryDir, { withFileTypes: true })
     .filter((d) => d.isDirectory())
     .map((dir, i) => {
-      const images = fs
+      const files = fs
         .readdirSync(path.join(galleryDir, dir.name))
-        .filter((f) => IMAGE_EXTS.has(path.extname(f).toLowerCase()))
+        .filter((f) => IMAGE_EXTS.has(path.extname(f).toLowerCase()));
+
+      const thumbFile = files.find(
+        (f) => path.basename(f, path.extname(f)).toLowerCase() === "thumb"
+      );
+      const thumbPath = thumbFile
+        ? `/images/gallery/${encodeURIComponent(dir.name)}/${thumbFile}`
+        : undefined;
+
+      const otherImages = files
+        .filter((f) => path.basename(f, path.extname(f)).toLowerCase() !== "thumb")
         .map((f) => `/images/gallery/${encodeURIComponent(dir.name)}/${f}`);
-      return { id: i + 1, title: dir.name, images };
+
+      const images = thumbPath ? [thumbPath, ...otherImages] : otherImages;
+
+      return {
+        id: i + 1,
+        title: dir.name,
+        thumbnail: thumbPath ?? images[0] ?? "",
+        images,
+      };
     })
-    .filter((p) => p.images.length > 0);
+    .filter((p) => p.thumbnail !== "" || p.images.length > 0);
 }
 
 export default function GalleryPage() {
   const projects = loadProjects();
+  const heroImg = resolveImage("gallery", "hero");
   return (
     <>
       <Header />
@@ -39,7 +59,7 @@ export default function GalleryPage() {
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/gallery/hero.png"
+            src={heroImg}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"

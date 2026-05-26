@@ -6,6 +6,7 @@ import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 interface Project {
   id: number;
   title: string;
+  thumbnail: string;
   images: string[];
 }
 
@@ -114,7 +115,7 @@ export default function GalleryClient({ projects }: GalleryClientProps) {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={project.images[0]}
+                      src={project.thumbnail}
                       alt={project.title}
                       className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                     />

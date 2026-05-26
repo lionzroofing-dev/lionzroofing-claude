@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
 import BlogPreview from "@/components/BlogPreview";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Roof Repairs In Miami Dade, Broward & West Palm Beach | Lionz Roofing",
@@ -41,6 +42,12 @@ const LOCATIONS = [
 ];
 
 export default function RoofRepairsPage() {
+  const imgs = {
+    hero:         resolveImage("roof-repairs", "hero"),
+    intro:        resolveImage("roof-repairs", "intro"),
+    whyChoose:    resolveImage("roof-repairs", "why-choose"),
+    servicesAcross: resolveImage("roof-repairs", "services-across"),
+  };
   return (
     <>
       <Header />
@@ -49,7 +56,7 @@ export default function RoofRepairsPage() {
         <section className="relative h-[200px] md:h-[300px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/roof-repairs/hero.jpg"
+            src={imgs.hero}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
@@ -73,7 +80,7 @@ export default function RoofRepairsPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/roof-repairs/intro.webp"
+                src={imgs.intro}
                 alt="Roof Repairs"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />
@@ -192,7 +199,7 @@ export default function RoofRepairsPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/roof-repairs/why-choose.webp"
+                src={imgs.whyChoose}
                 alt="Roof Repair Types"
                 className="w-full h-[480px] object-cover rounded-3xl"
               />
@@ -233,7 +240,7 @@ export default function RoofRepairsPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/roof-repairs/services-across.webp"
+                src={imgs.servicesAcross}
                 alt="Why Trust Lionz Roofing For Roof Repairs"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />

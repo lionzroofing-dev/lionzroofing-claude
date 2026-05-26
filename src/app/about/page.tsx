@@ -4,14 +4,16 @@ import { User } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServicesSlider from "@/components/ServicesSlider";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Lionz Roofing — Fort Lauderdale, FL",
   description:
     "Lionz Roofing is a licensed and insured South Florida roofing contractor serving Miami, Fort Lauderdale, Hollywood, Boca Raton, and West Palm Beach.",
 };
 
 export default function AboutPage() {
+  const ari = resolveImage("about", "ari");
   return (
     <>
       <Header />
@@ -89,7 +91,7 @@ export default function AboutPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/about/ari.png"
+                src={ari}
                 alt="Ari — Lead at Lionz Roofing"
                 className="w-full max-w-[430px] h-auto rounded-[32px] object-cover"
               />

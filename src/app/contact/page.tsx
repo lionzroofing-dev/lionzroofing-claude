@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import Button from "@/components/Button";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Lionz Roofing — Free Roofing Estimate",
   description:
     "Contact Lionz Roofing for a free roofing estimate in Fort Lauderdale and South Florida. Call, email, or fill out our contact form.",
 };
@@ -48,10 +48,10 @@ export default function ContactPage() {
                   <div>
                     <p className="font-bold text-lionzNavy">Phone</p>
                     <a
-                      href="tel:[PHONE]"
+                      href="tel:(954) 637-6835"
                       className="text-gray-600 hover:text-lionzGold transition-colors"
                     >
-                      [PHONE]
+                      (954) 637-6835
                     </a>
                   </div>
                 </li>
@@ -60,10 +60,10 @@ export default function ContactPage() {
                   <div>
                     <p className="font-bold text-lionzNavy">Email</p>
                     <a
-                      href="mailto:[EMAIL]"
+                      href="mailto:contact@lionzroofing.com"
                       className="text-gray-600 hover:text-lionzGold transition-colors"
                     >
-                      [EMAIL]
+                      contact@lionzroofing.com
                     </a>
                   </div>
                 </li>
