@@ -8,35 +8,35 @@ import {
 
 const services = [
   {
-    slug: "residential-roofing",
+    href: "/residential-roofing",
     title: "Residential Roofing",
     description:
       "New installations, repairs, or full replacements — we handle every roofing project across Southeast Florida with care, precision, and long-lasting craftsmanship.",
     icon: <Home size={56} className="text-lionzGold" />,
   },
   {
-    slug: "commercial-roofing",
+    href: "/commercial-roofing",
     title: "Commercial Roofing",
     description:
       "High-quality commercial roofing systems engineered for durability and performance in South Florida, including Miami, Fort Lauderdale, Palm Beach, and surrounding areas.",
     icon: <Building2 size={56} className="text-lionzGold" />,
   },
   {
-    slug: "roof-replacement",
+    href: "/roofing-replacement",
     title: "Roof Replacements",
     description:
       "Lionz Roofing specializes in code-compliant roof replacement services using Miami-Dade–approved materials built for long-term durability and energy efficiency.",
     icon: <Hammer size={56} className="text-lionzGold" />,
   },
   {
-    slug: "roof-repair",
+    href: "/roof-repairs",
     title: "Roof Repairs",
     description:
       "Get fast, reliable roof repairs for leaks, storm damage, and wear — proudly serving businesses and properties in Miami, Hollywood, Palm Beach, and Boca Raton.",
     icon: <Wrench size={56} className="text-lionzGold" />,
   },
   {
-    slug: "gutter-works",
+    href: "/gutter-works",
     title: "Gutter Works",
     description:
       "Lionz Roofing provides professional gutter installation, repair, and replacement services designed to handle intense rainfall, high winds, and debris buildup common throughout Miami-Dade, Broward, and Palm Beach counties.",
@@ -108,7 +108,7 @@ export default function ServicesSlider() {
                 {service.description}
               </p>
               <Link
-                href={`/services#${service.slug}`}
+                href={service.href}
                 className="bg-lionzGold text-lionzNavy font-bold px-10 py-3 rounded-xl hover:brightness-90 transition-all"
               >
                 Learn More

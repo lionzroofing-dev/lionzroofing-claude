@@ -1,122 +1,23 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 interface Project {
   id: number;
   title: string;
-  category: string;
   images: string[];
 }
 
-const PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: "Modern Lake House",
-    category: "Metal Roofing",
-    images: [
-      "/images/residential-roofing/hero.jpg",
-      "/images/residential-roofing/intro.webp",
-      "/images/residential-roofing/material-metal.webp",
-      "/images/service-areas/hero.webp",
-    ],
-  },
-  {
-    id: 2,
-    title: "Classic Shingle Roof",
-    category: "Asphalt Shingle",
-    images: [
-      "/images/residential-roofing/material-asphalt.jpg",
-      "/images/residential-roofing/hero.jpg",
-      "/images/service-areas/intro.webp",
-      "/images/residential-roofing/intro.webp",
-    ],
-  },
-  {
-    id: 3,
-    title: "Mediterranean Style",
-    category: "Clay Tile Roofing",
-    images: [
-      "/images/residential-roofing/material-tile.jpg",
-      "/images/residential-roofing/material-slate.webp",
-      "/images/residential-roofing/intro.webp",
-      "/images/service-areas/hero.webp",
-    ],
-  },
-  {
-    id: 4,
-    title: "Contemporary Farmhouse",
-    category: "Metal Roofing",
-    images: [
-      "/images/commercial-roofing/intro.webp",
-      "/images/residential-roofing/material-metal.webp",
-      "/images/service-areas/solutions.webp",
-      "/images/residential-roofing/hero.jpg",
-    ],
-  },
-  {
-    id: 5,
-    title: "Residential Re-Roof",
-    category: "Asphalt Shingle",
-    images: [
-      "/images/residential-roofing/intro.webp",
-      "/images/residential-roofing/material-asphalt.jpg",
-      "/images/service-areas/team.webp",
-      "/images/commercial-roofing/intro.webp",
-    ],
-  },
-  {
-    id: 6,
-    title: "Luxury Estate",
-    category: "Slate Roofing",
-    images: [
-      "/images/residential-roofing/material-slate.webp",
-      "/images/residential-roofing/material-tile.jpg",
-      "/images/service-areas/hero.webp",
-      "/images/residential-roofing/intro.webp",
-    ],
-  },
-  {
-    id: 7,
-    title: "Mountain Retreat",
-    category: "Metal Roofing",
-    images: [
-      "/images/service-areas/solutions.webp",
-      "/images/residential-roofing/material-metal.webp",
-      "/images/commercial-roofing/intro.webp",
-      "/images/residential-roofing/hero.jpg",
-    ],
-  },
-  {
-    id: 8,
-    title: "Coastal Home",
-    category: "Asphalt Shingle",
-    images: [
-      "/images/about/about-main.jpg",
-      "/images/residential-roofing/material-asphalt.jpg",
-      "/images/service-areas/intro.webp",
-      "/images/residential-roofing/intro.webp",
-    ],
-  },
-  {
-    id: 9,
-    title: "Urban Modern",
-    category: "Flat Roofing",
-    images: [
-      "/images/commercial-roofing/hero.jpg",
-      "/images/residential-roofing/material-flat.webp",
-      "/images/service-areas/team.webp",
-      "/images/commercial-roofing/intro.webp",
-    ],
-  },
-];
+interface GalleryClientProps {
+  projects: Project[];
+}
 
 const INITIAL_VISIBLE = 6;
 const BASE_SLIDE_W = 520;
 const BASE_GAP = 28;
 
-export default function GalleryClient() {
+export default function GalleryClient({ projects }: GalleryClientProps) {
   const [showAll, setShowAll] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -135,7 +36,9 @@ export default function GalleryClient() {
     return () => window.removeEventListener("resize", calc);
   }, []);
 
-  const visibleProjects = showAll ? PROJECTS : PROJECTS.slice(0, INITIAL_VISIBLE);
+  const visibleProjects = showAll
+    ? projects
+    : projects.slice(0, INITIAL_VISIBLE);
 
   const openProject = (project: Project) => {
     setActiveProject(project);
@@ -182,51 +85,65 @@ export default function GalleryClient() {
             <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-4">
               Our Work
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark mb-3">
+            {/* <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark mb-3">
               Projects <span className="text-lionzGold">Gallery</span>
-            </h2>
+            </h2> */}
             <p className="text-gray-500 text-base max-w-xl mx-auto">
               Explore our roofing projects. Each one built with quality
               craftsmanship and attention to detail.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visibleProjects.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => openProject(project)}
-                className="group relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow duration-300"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.images[0]}
-                  alt={project.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-lionzDark/0 group-hover:bg-lionzDark/30 transition-colors duration-300" />
-                <div className="bg-white px-5 py-4 flex items-center justify-between">
-                  <div>
-                    <p className="text-lionzNavy font-bold text-sm">{project.title}</p>
-                    <p className="text-gray-400 text-xs mt-0.5">{project.category}</p>
-                  </div>
-                  <span className="flex items-center gap-1 text-lionzGold text-xs font-bold hover:underline">
-                    View Project <ExternalLink size={12} />
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {!showAll && PROJECTS.length > INITIAL_VISIBLE && (
-            <div className="text-center mt-10">
-              <button
-                onClick={() => setShowAll(true)}
-                className="inline-flex items-center gap-2 border-2 border-lionzNavy text-lionzNavy font-bold px-8 py-3 rounded-xl hover:bg-lionzNavy hover:text-white transition-all duration-200"
-              >
-                Load More Projects
-              </button>
+          {projects.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-gray-400 text-lg font-medium">
+                Projects coming soon.
+              </p>
+              <p className="text-gray-300 text-sm mt-2">
+                Check back to see our latest work.
+              </p>
             </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {visibleProjects.map((project) => (
+                  <div
+                    key={project.id}
+                    onClick={() => openProject(project)}
+                    className="group relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow duration-300"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={project.images[0]}
+                      alt={project.title}
+                      className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-lionzDark/0 group-hover:bg-lionzDark/30 transition-colors duration-300" />
+                    <div className="bg-white px-5 py-4 flex items-center justify-between">
+                      <div>
+                        <p className="text-lionzNavy font-bold text-sm">
+                          {project.title}
+                        </p>
+                      </div>
+                      <span className="flex items-center gap-1 text-lionzGold text-xs font-bold hover:underline">
+                        View Project <ExternalLink size={12} />
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {!showAll && projects.length > INITIAL_VISIBLE && (
+                <div className="text-center mt-10">
+                  <button
+                    onClick={() => setShowAll(true)}
+                    className="inline-flex items-center gap-2 border-2 border-lionzNavy text-lionzNavy font-bold px-8 py-3 rounded-xl hover:bg-lionzNavy hover:text-white transition-all duration-200"
+                  >
+                    Load More Projects
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
@@ -235,7 +152,11 @@ export default function GalleryClient() {
       {activeProject && (
         <div
           className="fixed inset-0 z-50 overflow-hidden"
-          style={{ background: "rgba(38,38,38,0.87)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
+          style={{
+            background: "rgba(38,38,38,0.87)",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+          }}
           onClick={closeProject}
         >
           {/* Close button — top right */}
@@ -276,14 +197,17 @@ export default function GalleryClient() {
                     src={img}
                     alt={`${activeProject.title} — ${i + 1}`}
                     className="w-full object-cover"
-                    style={{ height: "60vh", borderRadius: 4, display: "block" }}
+                    style={{
+                      height: "60vh",
+                      borderRadius: 4,
+                      display: "block",
+                    }}
                   />
                   {i === activeIndex && (
                     <div className="mt-4 px-1">
                       <p className="text-white text-sm font-semibold leading-snug">
                         {activeProject.title}
                       </p>
-                      <p className="text-lionzGold text-xs mt-0.5">{activeProject.category}</p>
                     </div>
                   )}
                 </div>
@@ -294,7 +218,10 @@ export default function GalleryClient() {
           {/* Bottom nav arrows */}
           <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-10">
             <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev();
+              }}
               disabled={activeIndex === 0}
               className="flex items-center justify-center w-12 h-12 rounded-full transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed"
               style={{ background: "rgba(90,90,90,0.75)", color: "white" }}
@@ -303,7 +230,10 @@ export default function GalleryClient() {
               <ChevronLeft size={22} />
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                next();
+              }}
               className="flex items-center justify-center w-12 h-12 rounded-full transition-all hover:scale-105"
               style={{ background: "rgba(90,90,90,0.75)", color: "white" }}
               aria-label="Next image"

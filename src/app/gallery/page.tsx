@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import fs from "fs";
+import path from "path";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -10,12 +12,29 @@ export const metadata: Metadata = {
     "Browse completed roofing projects by Lionz Roofing — residential and commercial work across Fort Lauderdale, Miami, Palm Beach, and South Florida.",
 };
 
+const IMAGE_EXTS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"]);
+
+function loadProjects() {
+  const galleryDir = path.join(process.cwd(), "public/images/gallery");
+  return fs
+    .readdirSync(galleryDir, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((dir, i) => {
+      const images = fs
+        .readdirSync(path.join(galleryDir, dir.name))
+        .filter((f) => IMAGE_EXTS.has(path.extname(f).toLowerCase()))
+        .map((f) => `/images/gallery/${encodeURIComponent(dir.name)}/${f}`);
+      return { id: i + 1, title: dir.name, images };
+    })
+    .filter((p) => p.images.length > 0);
+}
+
 export default function GalleryPage() {
+  const projects = loadProjects();
   return (
     <>
       <Header />
       <main>
-
         {/* ── 1. Hero Banner ── */}
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -35,7 +54,7 @@ export default function GalleryPage() {
         </section>
 
         {/* ── 2. Interactive Gallery ── */}
-        <GalleryClient />
+        <GalleryClient projects={projects} />
 
         {/* ── 3. CTA ── */}
         <CTASection
@@ -46,7 +65,6 @@ export default function GalleryPage() {
           primaryLabel="Get Your Free Quote"
           primaryHref="/contact"
         />
-
       </main>
       <Footer />
     </>
