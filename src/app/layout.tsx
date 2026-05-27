@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "Roofing Contractors Fort Lauderdale",
     "Emergency Roof Repair Florida",
   ],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
