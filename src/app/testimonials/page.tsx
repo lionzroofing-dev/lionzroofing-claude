@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionTitle from "@/components/SectionTitle";
 import CTASection from "@/components/CTASection";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Testimonials",
@@ -12,18 +13,27 @@ export const metadata: Metadata = {
 };
 
 export default function TestimonialsPage() {
+  const heroImg = resolveImage("testimonials", "hero");
   return (
     <>
       <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
       <Header />
       <main>
-        <section className="bg-lionzNavy section-padding text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-lionzGold mb-4">
-            Customer Reviews
-          </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Trusted by homeowners and businesses across South Florida.
-          </p>
+        <section className="relative h-[200px] md:h-[300px] flex items-center justify-center overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={heroImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center 60%" }}
+          />
+          <div className="absolute inset-0 bg-lionzDark/70" />
+          <div className="relative z-10 text-center px-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+              Customer <span className="text-lionzGold">Reviews</span>
+            </h1>
+          </div>
         </section>
         <section className="section-padding bg-lionzLight">
           <div className="max-w-5xl mx-auto">

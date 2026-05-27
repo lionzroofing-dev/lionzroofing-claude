@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { blogPosts } from "@/data/blogPosts";
+import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
   title: "Roofing Blog",
@@ -11,19 +12,27 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const heroImg = resolveImage("blog", "hero");
   return (
     <>
       <Header />
       <main>
         {/* Hero */}
-        <section className="bg-lionzNavy py-16 px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-lionzGold mb-4">
-            Roofing Blog
-          </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Stay informed on the latest roofing tips, seasonal maintenance guides, and industry
-            updates for homeowners across South Florida.
-          </p>
+        <section className="relative h-[200px] md:h-[300px] flex items-center justify-center overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={heroImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center top" }}
+          />
+          <div className="absolute inset-0 bg-lionzDark/70" />
+          <div className="relative z-10 text-center px-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+              Roofing <span className="text-lionzGold">Blog</span>
+            </h1>
+          </div>
         </section>
 
         {/* Posts grid */}

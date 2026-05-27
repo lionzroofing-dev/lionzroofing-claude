@@ -26,15 +26,27 @@ export const metadata: Metadata = {
 const RENEW_BENEFITS = [
   { text: "No Traditional Credit Score Requirement", icon: UserCheck },
   { text: "Long Repayment Terms", icon: CalendarDays },
-  { text: "Energy-Efficient And Hurricane-Rated Roofing Eligibility", icon: Zap },
+  {
+    text: "Energy-Efficient And Hurricane-Rated Roofing Eligibility",
+    icon: Zap,
+  },
   { text: "Payments Tied To The Property Not The Homeowner", icon: Home },
-  { text: "Ideal For Roof Replacements And Storm-Resilient Upgrades", icon: CloudLightning },
+  {
+    text: "Ideal For Roof Replacements And Storm-Resilient Upgrades",
+    icon: CloudLightning,
+  },
 ];
 
 const YGRENE_BENEFITS = [
-  { text: "No Upfront Payment Required For Qualifying Properties", icon: HandCoins },
+  {
+    text: "No Upfront Payment Required For Qualifying Properties",
+    icon: HandCoins,
+  },
   { text: "Flexible Repayment Terms", icon: CreditCard },
-  { text: "Covers Energy-Efficient And Storm-Protection Roofing", icon: ShieldCheck },
+  {
+    text: "Covers Energy-Efficient And Storm-Protection Roofing",
+    icon: ShieldCheck,
+  },
   { text: "Helps Improve Property Value And Resilience", icon: TrendingUp },
   { text: "Designed For Florida's Climate And Building Codes", icon: Sun },
 ];
@@ -134,68 +146,66 @@ export default function FinancingPage() {
         </section>
 
         {/* Renew Financial */}
-        <section className="relative bg-lionzNavy overflow-hidden py-16 md:py-20">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={imgs.renewBg}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
-          />
-          <div className="relative z-10 max-w-7xl mx-auto px-4">
-            {/* Two-column: logo left, content right */}
-            <div className="flex flex-col lg:flex-row gap-12 items-center mb-12">
-              {/* Logo */}
-              <div className="shrink-0 lg:w-96 flex items-center justify-center">
-                <a href="https://renewfinancial.com/" target="_blank" rel="noopener noreferrer">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={imgs.renewLogo}
-                    alt="Renew Financial"
-                    className="w-full max-w-[380px] object-contain"
-                  />
-                </a>
-              </div>
-              {/* Content */}
-              <div className="flex-1">
-                <span className="inline-block bg-lionzGold/20 text-lionzGold font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-                  Financing Partners
-                </span>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
-                  Renew Financial
-                </h2>
-                <p className="text-gray-300 max-w-2xl leading-relaxed mb-6">
-                  Renew Financial offers PACE (Property Assessed Clean Energy)
-                  financing — a government-backed program that lets homeowners
-                  fund roofing upgrades without traditional credit requirements.
-                  Payments are made through your property tax bill, making it
-                  one of the most flexible options available in Florida.
-                </p>
-                <a
-                  href="https://renewfinancial.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary px-8 py-3"
-                >
-                  Renew Financial
-                </a>
-              </div>
+        <section className="bg-lionzNavy py-8 md:py-10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Centered header */}
+            <div className="max-w-3xl mx-auto text-center mb-6">
+              <a
+                href="https://renewfinancial.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mb-3"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imgs.renewLogo}
+                  alt="Renew Financial"
+                  className="max-w-[300px] mx-auto object-contain"
+                />
+              </a>
+              <span className="inline-block border border-lionzGold/40 text-lionzGold font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">
+                Financing Partner
+              </span>
+              <h2 className="text-xl md:text-2xl font-extrabold text-white mt-2 leading-tight">
+                Renew Financial —{" "}
+                <span className="text-lionzGold">No Credit Score Required</span>
+              </h2>
+              <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto mt-2 text-sm">
+                Renew Financial offers PACE (Property Assessed Clean Energy)
+                financing — a government-backed program that lets homeowners
+                fund roofing upgrades without traditional credit requirements.
+                Payments are made through your property tax bill, making it one
+                of the most flexible options available in Florida.
+              </p>
+              <a
+                href="https://renewfinancial.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary px-6 py-2 mt-4 inline-block text-sm"
+              >
+                Visit Renew Financial →
+              </a>
             </div>
 
-            {/* Benefits label */}
-            <p className="text-white font-bold text-lg mb-5">
-              <span className="text-lionzGold">Benefits</span> Of Renew Financial:
-            </p>
+            <div className="border-t border-white/10 my-5" />
 
-            {/* Benefit cards */}
+            {/* Benefits */}
+            <p className="text-white font-bold text-base mb-5">
+              <span className="text-lionzGold">Benefits</span> Of Renew
+              Financial:
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {RENEW_BENEFITS.map(({ text, icon: Icon }, i) => (
                 <div
                   key={i}
-                  className="border border-lionzGold/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4"
+                  className="flex flex-col items-center text-center gap-3 bg-white/5 rounded-2xl px-4 py-6"
                 >
-                  <Icon size={40} className="text-lionzGold shrink-0" />
-                  <p className="text-white text-sm font-medium leading-snug">{text}</p>
+                  <div className="bg-lionzGold/15 rounded-full p-3">
+                    <Icon size={24} className="text-lionzGold" />
+                  </div>
+                  <p className="text-white text-sm font-medium leading-snug">
+                    {text}
+                  </p>
                 </div>
               ))}
             </div>
@@ -223,7 +233,11 @@ export default function FinancingPage() {
                 </p>
               </div>
               <div className="shrink-0 lg:w-96 flex items-center justify-center">
-                <a href="https://ygrene.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://ygrene.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imgs.ygreneLogo}
@@ -236,7 +250,8 @@ export default function FinancingPage() {
 
             {/* Benefits label */}
             <p className="text-lionzDark font-bold text-lg mb-5">
-              <span className="text-lionzGold">Benefits</span> Of Ygrene Financing:
+              <span className="text-lionzGold">Benefits</span> Of Ygrene
+              Financing:
             </p>
 
             {/* Benefit cards */}
@@ -247,7 +262,9 @@ export default function FinancingPage() {
                   className="bg-white border border-lionzGold/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 shadow-sm"
                 >
                   <Icon size={40} className="text-lionzGold shrink-0" />
-                  <p className="text-lionzDark text-sm font-medium leading-snug">{text}</p>
+                  <p className="text-lionzDark text-sm font-medium leading-snug">
+                    {text}
+                  </p>
                 </div>
               ))}
             </div>

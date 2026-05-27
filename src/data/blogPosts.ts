@@ -40,6 +40,20 @@ export const blogPosts: BlogPost[] = [
     month: "Apr",
   },
   {
+    slug: "ridge-ventilation-south-florida",
+    title: "Ridge Ventilation: Why It's Essential for Your Roof in South Florida",
+    image: "/images/blog/blog-07.webp",
+    day: "10",
+    month: "Apr",
+  },
+  {
+    slug: "prepare-roof-florida-wet-season",
+    title: "How to Prepare Your Roof for Florida's Upcoming Wet Season",
+    image: "/images/blog/blog-06.webp",
+    day: "03",
+    month: "Apr",
+  },
+  {
     slug: "coastal-homes-florida-special-roofing",
     title: "Why Coastal Homes in Florida Need Special Roofing Systems",
     image: "/images/blog/blog-04.webp",
