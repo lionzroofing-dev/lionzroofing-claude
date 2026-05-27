@@ -139,14 +139,14 @@ export default function GutterWorksPage() {
         </section>
 
         {/* ── 3. Why Gutter Works Are Important ── */}
-        <section className="bg-lionzDark py-20 px-4">
+        <section className="bg-[#F5F0E8] py-20 px-4">
           <div className="max-w-7xl mx-auto">
             {/* Badge + Heading */}
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzGold text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
                 Benefits
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-lionzDark leading-tight">
                 Why{" "}
                 <span className="text-lionzGold">Gutter Works</span> Are{" "}
                 <span className="text-lionzGold">Important</span> In South
@@ -158,21 +158,21 @@ export default function GutterWorksPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
               {/* Left — text */}
               <div className="space-y-5">
-                <p className="text-gray-300 text-base leading-relaxed">
+                <p className="text-gray-600 text-base leading-relaxed">
                   Without properly functioning gutters, rainwater can cause
                   serious structural and roofing issues. Quality gutter systems:
                 </p>
-                <p className="text-gray-300 text-base leading-relaxed">
+                <p className="text-gray-600 text-base leading-relaxed">
                   In South Florida&apos;s frequent downpours, gutters are not
                   optional — they are a vital part of your roofing system.
                 </p>
               </div>
 
-              {/* Right — benefit bullets in a bordered box */}
-              <div className="border border-lionzGold/30 rounded-2xl p-8">
+              {/* Right — benefit bullets in a card */}
+              <div className="bg-white border border-lionzGold/40 rounded-2xl p-8 shadow-sm">
                 <ul className="space-y-3">
                   {BENEFITS.map((b) => (
-                    <li key={b} className="flex items-start gap-3 text-gray-200 text-sm">
+                    <li key={b} className="flex items-start gap-3 text-gray-700 text-sm">
                       <CheckCircle size={16} className="text-lionzGold shrink-0 mt-0.5" />
                       {b}
                     </li>
@@ -200,20 +200,20 @@ export default function GutterWorksPage() {
         </section>
 
         {/* ── 4. When To Call A Gutter Professional ── */}
-        <section className="bg-lionzNavy py-16 px-4">
+        <section className="bg-white py-16 px-4">
           <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-lionzDark mb-3">
               When To Call A{" "}
               <span className="text-lionzGold">Gutter Professional</span>
             </h2>
-            <p className="text-gray-400 text-sm mb-8">
+            <p className="text-gray-500 text-sm mb-8">
               Schedule gutter service if you notice:
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {WARNING_SIGNS.map((sign) => (
                 <div
                   key={sign}
-                  className="flex items-center gap-2 border border-lionzGold/40 rounded-full px-5 py-2.5"
+                  className="flex items-center gap-2 bg-lionzNavy rounded-full px-5 py-2.5"
                 >
                   <AlertTriangle size={13} className="text-lionzGold shrink-0" />
                   <span className="text-white text-sm font-semibold">{sign}</span>
