@@ -258,7 +258,7 @@ export default function ContactPage() {
                 {/* reCAPTCHA */}
                 <div
                   className="g-recaptcha"
-                  data-sitekey="6Ldoef8sAAAAAJIIiqeLO2HxzpEIwmGhvAAWlWQ9"
+                  data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                 />
 
                 <Button
