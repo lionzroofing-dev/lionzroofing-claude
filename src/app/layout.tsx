@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Lionz Roofing",
     images: [
       {
-        url: "/images/hero/hero-roof.png",
+        url: "/images/hero/hero-roof.webp",
         width: 1200,
         height: 630,
         alt: "Lionz Roofing — Fort Lauderdale Roofing Contractors",

@@ -37,7 +37,7 @@ export default function ServicesPage() {
         <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/services/hero.png"
+            src="/images/services/hero.webp"
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
@@ -58,7 +58,7 @@ export default function ServicesPage() {
             <div className="rounded-3xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/services/hero.png"
+                src="/images/services/hero.webp"
                 alt="Lionz Roofing Services"
                 className="w-full h-[420px] object-cover rounded-3xl"
               />

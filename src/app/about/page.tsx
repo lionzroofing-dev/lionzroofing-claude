@@ -128,7 +128,7 @@ export default function AboutPage() {
           {/* Background image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/cta/cta-bg.png"
+            src="/images/cta/cta-bg.webp"
             alt=""
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
