@@ -19,7 +19,7 @@ export default function TestimonialsPage() {
       <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
       <Header />
       <main>
-        <section className="relative h-[200px] md:h-[300px] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={heroImg}

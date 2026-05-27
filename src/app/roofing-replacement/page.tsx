@@ -52,7 +52,7 @@ export default function RoofingReplacementPage() {
       <main>
 
         {/* ── 1. Hero Banner ── */}
-        <section className="relative h-[200px] md:h-[300px] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[200px] md:h-[260px] flex items-center justify-center overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imgs.hero}
