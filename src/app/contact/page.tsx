@@ -3,7 +3,7 @@ import Script from "next/script";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import Button from "@/components/Button";
 import { resolveImage } from "@/lib/resolveImage";
 
@@ -17,7 +17,10 @@ export default function ContactPage() {
   const heroImg = resolveImage("contact", "hero");
   return (
     <>
-      <Script src="https://www.google.com/recaptcha/api.js" strategy="lazyOnload" />
+      <Script
+        src="https://www.google.com/recaptcha/api.js"
+        strategy="lazyOnload"
+      />
       <Header />
       <main>
         <section className="relative h-[200px] md:h-[300px] flex items-center justify-center overflow-hidden">
@@ -60,7 +63,10 @@ export default function ContactPage() {
               </h2>
               <ul className="space-y-5 mb-8">
                 <li className="flex items-start gap-3">
-                  <MapPin size={20} className="text-lionzGold shrink-0 mt-0.5" />
+                  <MapPin
+                    size={20}
+                    className="text-lionzGold shrink-0 mt-0.5"
+                  />
                   <div>
                     <p className="font-bold text-lionzNavy">Address</p>
                     <a
@@ -76,6 +82,18 @@ export default function ContactPage() {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
+                  <Mail size={20} className="text-lionzGold shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-lionzNavy">Email</p>
+                    <a
+                      href="mailto:contact@lionzroofing.com"
+                      className="text-gray-600 hover:text-lionzGold transition-colors"
+                    >
+                      contact@lionzroofing.com
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
                   <Phone size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-lionzNavy">Phone</p>
@@ -87,16 +105,14 @@ export default function ContactPage() {
                     </a>
                   </div>
                 </li>
+
                 <li className="flex items-start gap-3">
-                  <Mail size={20} className="text-lionzGold shrink-0 mt-0.5" />
+                  <Clock size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-bold text-lionzNavy">Email</p>
-                    <a
-                      href="mailto:contact@lionzroofing.com"
-                      className="text-gray-600 hover:text-lionzGold transition-colors"
-                    >
-                      contact@lionzroofing.com
-                    </a>
+                    <p className="font-bold text-lionzNavy">Working Hours</p>
+                    <p className="text-gray-600">
+                      Monday – Friday: 9:00am – 5:00pm
+                    </p>
                   </div>
                 </li>
               </ul>
@@ -186,14 +202,14 @@ export default function ContactPage() {
                     name="service"
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                   >
-                    <option value="Residential Roofing">Residential Roofing</option>
-                    <option value="Commercial Roofing">Commercial Roofing</option>
+                    <option value="">Select a service</option>
+                    <option value="Commercial Roofing">
+                      Commercial Roofing
+                    </option>
+                    <option value="Residential Roofing">
+                      Residential Roofing
+                    </option>
                     <option value="Roof Repair">Roof Repair</option>
-                    <option value="Roof Replacement">Roof Replacement</option>
-                    <option value="Storm Damage">Storm Damage</option>
-                    <option value="Roof Inspection">Roof Inspection</option>
-                    <option value="Gutter Works">Gutter Works</option>
-                    <option value="Other">Other</option>
                   </select>
                 </div>
 
@@ -205,9 +221,10 @@ export default function ContactPage() {
                     className="mt-0.5 shrink-0 accent-lionzGold"
                   />
                   <span className="text-xs text-gray-600 leading-relaxed">
-                    By checking this box, you agree to receive transaction messages from Lionz
-                    Roofing. Text and data rates may apply. Message frequency varies. Reply STOP
-                    to unsubscribe or HELP for help.
+                    By checking this box, you agree to receive transaction
+                    messages from Lionz Roofing. Text and data rates may apply.
+                    Message frequency varies. Reply STOP to unsubscribe or HELP
+                    for help.
                   </span>
                 </label>
 
@@ -221,11 +238,17 @@ export default function ContactPage() {
                   />
                   <span className="text-xs text-gray-600 leading-relaxed">
                     By checking I accept{" "}
-                    <Link href="/privacy-policy" className="font-bold text-lionzNavy hover:text-lionzGold transition-colors">
+                    <Link
+                      href="/privacy-policy"
+                      className="font-bold text-lionzNavy hover:text-lionzGold transition-colors"
+                    >
                       Privacy Policy
                     </Link>{" "}
                     and{" "}
-                    <Link href="/terms-and-conditions" className="font-bold text-lionzNavy hover:text-lionzGold transition-colors">
+                    <Link
+                      href="/terms-and-conditions"
+                      className="font-bold text-lionzNavy hover:text-lionzGold transition-colors"
+                    >
                       Terms &amp; Conditions
                     </Link>
                     .
@@ -238,7 +261,11 @@ export default function ContactPage() {
                   data-sitekey="6Ldoef8sAAAAAJIIiqeLO2HxzpEIwmGhvAAWlWQ9"
                 />
 
-                <Button type="submit" variant="primary" className="w-full text-center justify-center">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="w-full text-center justify-center"
+                >
                   Send My Request
                 </Button>
               </form>
