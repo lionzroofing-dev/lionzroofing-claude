@@ -36,11 +36,16 @@ export default function ContactPage() {
                   <MapPin size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-lionzNavy">Address</p>
-                    <p className="text-gray-600">
+                    <a
+                      href="https://www.google.com/maps?q=5200+NW+33rd+Ave+Suite+200,+Fort+Lauderdale,+FL+33309"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-lionzGold transition-colors"
+                    >
                       5200 NW 33rd Ave Suite 200
                       <br />
                       Fort Lauderdale, FL 33309
-                    </p>
+                    </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">

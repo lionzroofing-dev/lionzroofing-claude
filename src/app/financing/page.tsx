@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
+import {
+  CheckCircle2,
+  UserCheck,
+  CalendarDays,
+  Zap,
+  Home,
+  CloudLightning,
+  HandCoins,
+  CreditCard,
+  ShieldCheck,
+  TrendingUp,
+  Sun,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Button from "@/components/Button";
 import { resolveImage } from "@/lib/resolveImage";
 
 export const metadata: Metadata = {
@@ -13,19 +24,19 @@ export const metadata: Metadata = {
 };
 
 const RENEW_BENEFITS = [
-  "No Traditional Credit Score Requirement",
-  "Long Repayment Terms",
-  "Energy-Efficient And Hurricane-Rated Roofing Eligibility",
-  "Payments Tied To The Property Not The Homeowner",
-  "Ideal For Roof Replacements And Storm-Resilient Upgrades",
+  { text: "No Traditional Credit Score Requirement", icon: UserCheck },
+  { text: "Long Repayment Terms", icon: CalendarDays },
+  { text: "Energy-Efficient And Hurricane-Rated Roofing Eligibility", icon: Zap },
+  { text: "Payments Tied To The Property Not The Homeowner", icon: Home },
+  { text: "Ideal For Roof Replacements And Storm-Resilient Upgrades", icon: CloudLightning },
 ];
 
 const YGRENE_BENEFITS = [
-  "No Upfront Payment Required For Qualifying Properties",
-  "Flexible Repayment Terms",
-  "Covers Energy-Efficient And Storm-Protection Roofing",
-  "Helps Improve Property Value And Resilience",
-  "Designed For Florida's Climate And Building Codes",
+  { text: "No Upfront Payment Required For Qualifying Properties", icon: HandCoins },
+  { text: "Flexible Repayment Terms", icon: CreditCard },
+  { text: "Covers Energy-Efficient And Storm-Protection Roofing", icon: ShieldCheck },
+  { text: "Helps Improve Property Value And Resilience", icon: TrendingUp },
+  { text: "Designed For Florida's Climate And Building Codes", icon: Sun },
 ];
 
 const WHY_MATTERS_POINTS = [
@@ -58,6 +69,9 @@ export default function FinancingPage() {
     intro: resolveImage("financing", "intro-1"),
     benefits1: resolveImage("financing", "benefits-1"),
     benefits2: resolveImage("financing", "benefits-2"),
+    renewLogo: resolveImage("financing", "renew-logo"),
+    renewBg: resolveImage("financing", "roof"),
+    ygreneLogo: resolveImage("financing", "ygrene"),
   };
   return (
     <>
@@ -120,39 +134,68 @@ export default function FinancingPage() {
         </section>
 
         {/* Renew Financial */}
-        <section className="bg-lionzDark py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="mb-10">
-              <span className="inline-block bg-lionzGold/20 text-lionzGold font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-                Financing Partners
-              </span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-lionzGold mb-4">
-                Renew Financial
-              </h2>
-              <p className="text-gray-300 max-w-2xl leading-relaxed mb-6">
-                Renew Financial offers PACE (Property Assessed Clean Energy)
-                financing — a government-backed program that lets homeowners
-                fund roofing upgrades without traditional credit requirements.
-                Payments are made through your property tax bill, making it one
-                of the most flexible options available in Florida.
-              </p>
-              <Button href="/contact" variant="primary" className="px-8 py-3">
-                Renew Financial
-              </Button>
+        <section className="relative bg-lionzNavy overflow-hidden py-16 md:py-20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imgs.renewBg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover opacity-20"
+          />
+          <div className="relative z-10 max-w-7xl mx-auto px-4">
+            {/* Two-column: logo left, content right */}
+            <div className="flex flex-col lg:flex-row gap-12 items-center mb-12">
+              {/* Logo */}
+              <div className="shrink-0 lg:w-96 flex items-center justify-center">
+                <a href="https://renewfinancial.com/" target="_blank" rel="noopener noreferrer">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imgs.renewLogo}
+                    alt="Renew Financial"
+                    className="w-full max-w-[380px] object-contain"
+                  />
+                </a>
+              </div>
+              {/* Content */}
+              <div className="flex-1">
+                <span className="inline-block bg-lionzGold/20 text-lionzGold font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                  Financing Partners
+                </span>
+                <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                  Renew Financial
+                </h2>
+                <p className="text-gray-300 max-w-2xl leading-relaxed mb-6">
+                  Renew Financial offers PACE (Property Assessed Clean Energy)
+                  financing — a government-backed program that lets homeowners
+                  fund roofing upgrades without traditional credit requirements.
+                  Payments are made through your property tax bill, making it
+                  one of the most flexible options available in Florida.
+                </p>
+                <a
+                  href="https://renewfinancial.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary px-8 py-3"
+                >
+                  Renew Financial
+                </a>
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
-              {RENEW_BENEFITS.map((benefit, i) => (
+
+            {/* Benefits label */}
+            <p className="text-white font-bold text-lg mb-5">
+              <span className="text-lionzGold">Benefits</span> Of Renew Financial:
+            </p>
+
+            {/* Benefit cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {RENEW_BENEFITS.map(({ text, icon: Icon }, i) => (
                 <div
                   key={i}
-                  className="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-3"
+                  className="border border-lionzGold/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4"
                 >
-                  <CheckCircle2
-                    size={20}
-                    className="text-lionzGold shrink-0 mt-0.5"
-                  />
-                  <p className="text-gray-200 text-sm leading-snug font-medium">
-                    {benefit}
-                  </p>
+                  <Icon size={40} className="text-lionzGold shrink-0" />
+                  <p className="text-white text-sm font-medium leading-snug">{text}</p>
                 </div>
               ))}
             </div>
@@ -162,45 +205,68 @@ export default function FinancingPage() {
         {/* Ygrene Financing */}
         <section className="bg-lionzLight py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="mb-10">
-              <span className="inline-block bg-lionzGold/20 text-lionzGold font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-                Financing Partners
-              </span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-lionzDark mb-4">
-                Ygrene Financing
-              </h2>
-              <p className="text-gray-600 max-w-2xl leading-relaxed mb-6">
-                Ygrene is a leading PACE financing provider specializing in
-                energy-efficient and storm-resilient home improvements. Their
-                programs are specifically designed with Florida&apos;s climate
-                and building codes in mind — making them ideal for roofing
-                projects that meet local standards.
-              </p>
+            {/* Two-column: content left, logo right */}
+            <div className="flex flex-col lg:flex-row gap-12 items-center mb-12">
+              <div className="flex-1">
+                <span className="inline-block bg-lionzGold/20 text-lionzGold font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+                  Financing Partners
+                </span>
+                <h2 className="text-2xl md:text-3xl font-extrabold mb-4">
+                  <span className="text-lionzGold">Ygrene</span>{" "}
+                  <span className="text-lionzDark">Financing</span>
+                </h2>
+                <p className="text-gray-600 max-w-2xl leading-relaxed">
+                  Ygrene Financing provides PACE-based funding for approved
+                  roofing projects, helping South Florida homeowners install
+                  Miami-Dade–approved, hurricane-resistant roofing systems with
+                  affordable repayment options.
+                </p>
+              </div>
+              <div className="shrink-0 lg:w-96 flex items-center justify-center">
+                <a href="https://ygrene.com/" target="_blank" rel="noopener noreferrer">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imgs.ygreneLogo}
+                    alt="Ygrene Financing"
+                    className="w-full max-w-[340px] object-contain"
+                  />
+                </a>
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-              {YGRENE_BENEFITS.map((benefit, i) => (
+
+            {/* Benefits label */}
+            <p className="text-lionzDark font-bold text-lg mb-5">
+              <span className="text-lionzGold">Benefits</span> Of Ygrene Financing:
+            </p>
+
+            {/* Benefit cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+              {YGRENE_BENEFITS.map(({ text, icon: Icon }, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-5 flex items-start gap-3 shadow-sm"
+                  className="bg-white border border-lionzGold/50 rounded-2xl p-6 flex flex-col items-center text-center gap-4 shadow-sm"
                 >
-                  <CheckCircle2
-                    size={20}
-                    className="text-lionzGold shrink-0 mt-0.5"
-                  />
-                  <p className="text-gray-700 text-sm leading-snug font-medium">
-                    {benefit}
-                  </p>
+                  <Icon size={40} className="text-lionzGold shrink-0" />
+                  <p className="text-lionzDark text-sm font-medium leading-snug">{text}</p>
                 </div>
               ))}
             </div>
-            <Button href="/contact" variant="primary" className="px-8 py-3">
-              Ygrene Home Repair Financing
-            </Button>
+
+            <div className="flex justify-center">
+              <a
+                href="https://ygrene.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary px-8 py-3"
+              >
+                Ygrene Home Repair Financing
+              </a>
+            </div>
           </div>
         </section>
 
         {/* Why Roofing Financing Matters */}
-        <section className="bg-lionzDark py-16 md:py-20">
+        <section className="bg-lionzNavy py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col lg:flex-row gap-12 items-start">
               <div className="flex-1">

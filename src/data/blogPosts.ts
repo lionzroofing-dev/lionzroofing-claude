@@ -32,4 +32,18 @@ export const blogPosts: BlogPost[] = [
     day: "04",
     month: "May",
   },
+  {
+    slug: "torch-down-roofing-south-florida",
+    title: "How Torch-Down Roofing Works with Different Roof Materials in South Florida",
+    image: "/images/blog/blog-05.webp",
+    day: "17",
+    month: "Apr",
+  },
+  {
+    slug: "coastal-homes-florida-special-roofing",
+    title: "Why Coastal Homes in Florida Need Special Roofing Systems",
+    image: "/images/blog/blog-04.webp",
+    day: "18",
+    month: "Mar",
+  },
 ];

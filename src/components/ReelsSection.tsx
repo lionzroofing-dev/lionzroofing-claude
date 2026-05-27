@@ -110,10 +110,10 @@ const ReelCard = memo(function ReelCard({
       {!isPlaying && !isLoading && reel.videoSrc && (
         <button
           onClick={(e) => { e.stopPropagation(); onPlay(reel.id); }}
-          className={`absolute inset-0 flex items-center justify-center z-30 group ${!isCenter ? "opacity-0 hover:opacity-100 transition-opacity duration-200" : ""}`}
+          className={`absolute inset-0 flex items-center justify-center z-30 group outline-none focus:outline-none ${!isCenter ? "opacity-0 hover:opacity-100 transition-opacity duration-200" : ""}`}
           aria-label="Play"
         >
-          <div className="bg-white/90 backdrop-blur-sm group-hover:bg-white rounded-full p-4 shadow-lg transition-all duration-200 group-hover:scale-110">
+          <div className="bg-white/90 backdrop-blur-sm group-hover:bg-white rounded-full p-4 transition-all duration-200 group-hover:scale-110">
             <Play size={22} fill="#E0B000" className="translate-x-0.5" />
           </div>
         </button>
@@ -228,7 +228,7 @@ export default function ReelsSection() {
         {/* Desktop */}
         <div className="hidden md:flex relative items-center justify-center">
           <button onClick={() => nav("prev")} aria-label="Previous"
-            className="absolute left-0 z-30 bg-black/80 hover:bg-black text-white rounded-full p-2.5 transition-colors shadow-md">
+            className="absolute left-0 z-30 bg-black/80 hover:bg-black text-white rounded-full p-2.5 transition-colors shadow-md outline-none focus:outline-none">
             <ChevronLeft size={22} />
           </button>
 
@@ -269,7 +269,7 @@ export default function ReelsSection() {
           </div>
 
           <button onClick={() => nav("next")} aria-label="Next"
-            className="absolute right-0 z-30 bg-black/80 hover:bg-black text-white rounded-full p-2.5 transition-colors shadow-md">
+            className="absolute right-0 z-30 bg-black/80 hover:bg-black text-white rounded-full p-2.5 transition-colors shadow-md outline-none focus:outline-none">
             <ChevronRight size={22} />
           </button>
         </div>
