@@ -1,20 +1,62 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState, useRef } from "react";
 import Script from "next/script";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import Button from "@/components/Button";
-import { resolveImage } from "@/lib/resolveImage";
-
-export const metadata: Metadata = {
-  title: "Contact Lionz Roofing — Free Roofing Estimate",
-  description:
-    "Contact Lionz Roofing for a free roofing estimate in Fort Lauderdale and South Florida. Call, email, or fill out our contact form.",
-};
+import { MapPin, Phone, Mail, Clock, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+declare global {
+  interface Window {
+    grecaptcha: { getResponse: () => string; reset: () => void };
+  }
+}
 
 export default function ContactPage() {
-  const heroImg = resolveImage("contact", "hero");
+  const heroImg = "/images/contact/hero.jpg";
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const recaptchaToken = window.grecaptcha?.getResponse() ?? "";
+
+    const payload = {
+      firstName:      data.get("firstName"),
+      lastName:       data.get("lastName"),
+      phone:          data.get("phone"),
+      email:          data.get("email"),
+      service:        data.get("service"),
+      location:       data.get("location"),
+      message:        data.get("message"),
+      smsConsent:     data.get("smsConsent") === "on",
+      recaptchaToken,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Submission failed.");
+      setStatus("success");
+      formRef.current?.reset();
+      window.grecaptcha?.reset();
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <>
       <Script
@@ -34,7 +76,7 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-tight">
               Contact <span className="text-lionzGold">Us</span>
             </h1>
           </div>
@@ -44,7 +86,6 @@ export default function ContactPage() {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              {/* Map preview */}
               <div className="rounded-2xl overflow-hidden mb-6 h-52 w-full">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.3!2d-80.1765!3d26.1612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9009c4a1b6f0d%3A0x1!2s5200+NW+33rd+Ave+Suite+200%2C+Fort+Lauderdale%2C+FL+33309!5e0!3m2!1sen!2sus!4v1"
@@ -58,15 +99,10 @@ export default function ContactPage() {
                 />
               </div>
 
-              <h2 className="text-2xl font-extrabold text-lionzNavy mb-6">
-                Get In Touch
-              </h2>
+              <h2 className="text-2xl font-extrabold text-lionzNavy mb-6">Get In Touch</h2>
               <ul className="space-y-5 mb-8">
                 <li className="flex items-start gap-3">
-                  <MapPin
-                    size={20}
-                    className="text-lionzGold shrink-0 mt-0.5"
-                  />
+                  <MapPin size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-lionzNavy">Address</p>
                     <a
@@ -75,9 +111,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-lionzGold transition-colors"
                     >
-                      5200 NW 33rd Ave Suite 200
-                      <br />
-                      Fort Lauderdale, FL 33309
+                      5200 NW 33rd Ave Suite 200<br />Fort Lauderdale, FL 33309
                     </a>
                   </div>
                 </li>
@@ -85,10 +119,7 @@ export default function ContactPage() {
                   <Mail size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-lionzNavy">Email</p>
-                    <a
-                      href="mailto:contact@lionzroofing.com"
-                      className="text-gray-600 hover:text-lionzGold transition-colors"
-                    >
+                    <a href="mailto:contact@lionzroofing.com" className="text-gray-600 hover:text-lionzGold transition-colors">
                       contact@lionzroofing.com
                     </a>
                   </div>
@@ -97,22 +128,16 @@ export default function ContactPage() {
                   <Phone size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-lionzNavy">Phone</p>
-                    <a
-                      href="tel:(954) 637-6835"
-                      className="text-gray-600 hover:text-lionzGold transition-colors"
-                    >
+                    <a href="tel:(954) 637-6835" className="text-gray-600 hover:text-lionzGold transition-colors">
                       (954) 637-6835
                     </a>
                   </div>
                 </li>
-
                 <li className="flex items-start gap-3">
                   <Clock size={20} className="text-lionzGold shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-lionzNavy">Working Hours</p>
-                    <p className="text-gray-600">
-                      Monday – Friday: 9:00am – 5:00pm
-                    </p>
+                    <p className="text-gray-600">Monday – Friday: 9:00am – 5:00pm</p>
                   </div>
                 </li>
               </ul>
@@ -120,19 +145,38 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="bg-lionzLight rounded-2xl p-8">
-              <h2 className="text-2xl font-extrabold text-lionzNavy mb-6">
-                Request a Free Quote
-              </h2>
-              <form className="space-y-4">
+              <h2 className="text-2xl font-extrabold text-lionzNavy mb-6">Request a Free Quote</h2>
+
+              {/* Success state */}
+              {status === "success" && (
+                <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
+                  <CheckCircle2 size={20} className="text-green-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-green-800">Request Sent!</p>
+                    <p className="text-green-700 text-sm">Thank you! We&apos;ll be in touch within 1 business day.</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Error state */}
+              {status === "error" && (
+                <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
+                  <AlertCircle size={20} className="text-red-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-red-800">Submission Failed</p>
+                    <p className="text-red-700 text-sm">{errorMsg || "Please try again or call us directly."}</p>
+                  </div>
+                </div>
+              )}
+
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 {/* Location */}
                 <div>
                   <label className="block text-sm font-bold text-lionzNavy mb-1">
                     Enter A Location <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="text"
-                    name="location"
-                    required
+                    type="text" name="location" required
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                   />
                 </div>
@@ -144,10 +188,7 @@ export default function ContactPage() {
                       First Name <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="firstName"
-                      required
-                      placeholder="First Name"
+                      type="text" name="firstName" required placeholder="First Name"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                     />
                   </div>
@@ -156,10 +197,7 @@ export default function ContactPage() {
                       Last Name <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="lastName"
-                      required
-                      placeholder="Last Name"
+                      type="text" name="lastName" required placeholder="Last Name"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                     />
                   </div>
@@ -172,10 +210,7 @@ export default function ContactPage() {
                       Phone <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="tel"
-                      name="phone"
-                      required
-                      placeholder="Phone"
+                      type="tel" name="phone" required placeholder="Phone"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                     />
                   </div>
@@ -184,10 +219,7 @@ export default function ContactPage() {
                       Email <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="Email"
+                      type="email" name="email" required placeholder="Email"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                     />
                   </div>
@@ -195,79 +227,65 @@ export default function ContactPage() {
 
                 {/* Service */}
                 <div>
-                  <label className="block text-sm font-bold text-lionzNavy mb-1">
-                    Select Your Service
-                  </label>
+                  <label className="block text-sm font-bold text-lionzNavy mb-1">Select Your Service</label>
                   <select
                     name="service"
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white"
                   >
                     <option value="">Select a service</option>
-                    <option value="Commercial Roofing">
-                      Commercial Roofing
-                    </option>
-                    <option value="Residential Roofing">
-                      Residential Roofing
-                    </option>
+                    <option value="Commercial Roofing">Commercial Roofing</option>
+                    <option value="Residential Roofing">Residential Roofing</option>
                     <option value="Roof Repair">Roof Repair</option>
                   </select>
                 </div>
 
+                {/* Message */}
+                <div>
+                  <label className="block text-sm font-bold text-lionzNavy mb-1">Message</label>
+                  <textarea
+                    name="message" rows={3}
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lionzGold bg-white resize-none"
+                  />
+                </div>
+
                 {/* SMS Consent */}
                 <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="smsConsent"
-                    className="mt-0.5 shrink-0 accent-lionzGold"
-                  />
+                  <input type="checkbox" name="smsConsent" className="mt-0.5 shrink-0 accent-lionzGold" />
                   <span className="text-xs text-gray-600 leading-relaxed">
-                    By checking this box, you agree to receive transaction
-                    messages from Lionz Roofing. Text and data rates may apply.
-                    Message frequency varies. Reply STOP to unsubscribe or HELP
-                    for help.
+                    By checking this box, you agree to receive transaction messages from Lionz Roofing. Text and data rates may apply. Message frequency varies. Reply STOP to unsubscribe or HELP for help.
                   </span>
                 </label>
 
                 {/* Privacy / Terms Consent */}
                 <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="termsConsent"
-                    required
-                    className="mt-0.5 shrink-0 accent-lionzGold"
-                  />
+                  <input type="checkbox" name="termsConsent" required className="mt-0.5 shrink-0 accent-lionzGold" />
                   <span className="text-xs text-gray-600 leading-relaxed">
                     By checking I accept{" "}
-                    <Link
-                      href="/privacy-policy"
-                      className="font-bold text-lionzNavy hover:text-lionzGold transition-colors"
-                    >
+                    <Link href="/privacy-policy" className="font-bold text-lionzNavy hover:text-lionzGold transition-colors">
                       Privacy Policy
                     </Link>{" "}
                     and{" "}
-                    <Link
-                      href="/terms-and-conditions"
-                      className="font-bold text-lionzNavy hover:text-lionzGold transition-colors"
-                    >
+                    <Link href="/terms-and-conditions" className="font-bold text-lionzNavy hover:text-lionzGold transition-colors">
                       Terms &amp; Conditions
-                    </Link>
-                    .
+                    </Link>.
                   </span>
                 </label>
 
                 {/* reCAPTCHA */}
                 <div
                   className="g-recaptcha"
-                  data-sitekey="6Ldoef8sAAAAAJIIiqeLO2HxzpEIwmGhvAAWlWQ9"
+                  data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                 />
 
-                <Button
+                <button
                   type="submit"
-                  variant="primary"
-                  className="w-full text-center justify-center"
+                  disabled={status === "loading"}
+                  className="w-full btn-primary text-center justify-center flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send My Request
-                </Button>
+                  {status === "loading" ? (
+                    <><Loader2 size={16} className="animate-spin" /> Sending…</>
+                  ) : "Send My Request"}
+                </button>
               </form>
             </div>
           </div>

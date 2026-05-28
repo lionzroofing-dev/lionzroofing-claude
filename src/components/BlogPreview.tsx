@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BookOpen } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 
@@ -39,12 +40,13 @@ export default function BlogPreview() {
               {/* Image + date badge wrapper */}
               <div className="relative">
                 {/* Image */}
-                <div className="overflow-hidden aspect-[4/3] bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                  <Image
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 {/* Date badge — overlaps image/content seam */}
