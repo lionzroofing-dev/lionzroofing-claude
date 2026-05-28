@@ -173,7 +173,6 @@ export default function GalleryClient({ projects }: GalleryClientProps) {
           {/* Filmstrip */}
           <div
             className="absolute inset-0 flex items-center"
-            onClick={(e) => e.stopPropagation()}
           >
             <div
               className="flex transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
@@ -191,7 +190,7 @@ export default function GalleryClient({ projects }: GalleryClientProps) {
                     opacity: i === activeIndex ? 1 : 0.38,
                     cursor: i !== activeIndex ? "pointer" : "default",
                   }}
-                  onClick={() => i !== activeIndex && setActiveIndex(i)}
+                  onClick={(e) => { e.stopPropagation(); if (i !== activeIndex) setActiveIndex(i); }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
