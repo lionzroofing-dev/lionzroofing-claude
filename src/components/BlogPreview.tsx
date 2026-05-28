@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BookOpen } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
 
@@ -29,22 +30,23 @@ export default function BlogPreview() {
         </p>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {blogPosts.slice(0, 3).map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
+              className="group flex flex-col bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
             >
               {/* Image + date badge wrapper */}
               <div className="relative">
                 {/* Image */}
-                <div className="overflow-hidden aspect-[4/3] bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                <div className="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                  <Image
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 {/* Date badge — overlaps image/content seam */}
@@ -55,8 +57,8 @@ export default function BlogPreview() {
               </div>
 
               {/* Content */}
-              <div className="pt-10 pb-6 px-5">
-                <h3 className="text-lionzNavy font-bold text-base leading-snug mb-4 line-clamp-3">
+              <div className="pt-8 sm:pt-10 pb-6 px-5 flex flex-col flex-1">
+                <h3 className="text-lionzNavy font-bold text-base leading-snug mb-4 line-clamp-3 flex-1">
                   {post.title}
                 </h3>
                 <span className="text-lionzNavy text-sm font-semibold group-hover:text-lionzGold transition-colors">

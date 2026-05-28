@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left — About text */}
             <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-lionzDark leading-tight mb-6">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-lionzDark leading-tight mb-6">
                 About <span className="text-lionzGold">Lionz Roofing</span>
               </h1>
               <p className="text-gray-600 text-base leading-relaxed text-justify">
@@ -60,7 +60,7 @@ export default function AboutPage() {
               </div>
 
               <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight mb-5">
-                <span className="text-lionzGold">Emergency</span> Roof Repair
+                <span className="text-lionzGold">Emergency </span> Roof Repair
                 &amp;
                 <br />
                 Storm Damage Experts
@@ -86,37 +86,41 @@ export default function AboutPage() {
 
         {/* Section 2 — Meet the Team */}
         <section className="bg-white py-20 px-4">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left — Ari photo */}
-            <div className="rounded-3xl overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={ari}
-                alt="Ari — Lead at Lionz Roofing"
-                className="w-full max-w-[430px] h-auto rounded-[32px] object-cover"
-              />
-            </div>
-
-            {/* Right — Ari intro */}
-            <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
+          <div className="max-w-7xl mx-auto">
+            {/* Section badge */}
+            <div className="flex justify-center mb-10">
+              <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full">
                 <User size={13} className="text-lionzGold" />
                 Meet the Team
               </div>
+            </div>
 
-              <h2 className="text-4xl md:text-5xl font-extrabold text-lionzDark leading-tight mb-6">
-                I&apos;m <span className="text-lionzGold">Ari</span>
-              </h2>
-              <p className="text-gray-600 text-base leading-relaxed mb-4 text-justify">
-                I Lead <strong>Lionz Roofing</strong> With One Standard: No
-                Shortcuts, Just Solid Work, Strong Teams, and Attention to Every
-                Detail.
-              </p>
-              <p className="text-gray-600 text-base leading-relaxed text-justify">
-                From Estimation to Final Installation, I Stay Hands-On to Make
-                Sure Every Roof Is Built to Last.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left — Ari photo */}
+              <div className="rounded-3xl overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={ari}
+                  alt="Ari — Lead at Lionz Roofing"
+                  className="w-full max-w-[430px] h-auto rounded-[32px] object-cover"
+                />
+              </div>
+
+              {/* Right — Ari intro */}
+              <div>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-lionzDark leading-tight mb-6">
+                  I&apos;m <span className="text-lionzGold">Ari</span>
+                </h2>
+                <p className="text-gray-600 text-base leading-relaxed mb-4 text-justify">
+                  I Lead <strong>Lionz Roofing</strong> With One Standard: No
+                  Shortcuts, Just Solid Work, Strong Teams, and Attention to
+                  Every Detail.
+                </p>
+                <p className="text-gray-600 text-base leading-relaxed text-justify">
+                  From Estimation to Final Installation, I Stay Hands-On to Make
+                  Sure Every Roof Is Built to Last.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -175,12 +179,21 @@ export default function AboutPage() {
         {/* Section 5 — Service Areas + Map */}
         <section className="bg-white py-20 px-4">
           <div className="max-w-7xl mx-auto">
-
             {/* Top row: badge left, heading right */}
             <div className="flex flex-col lg:flex-row lg:items-start gap-6 mb-10">
               <div className="shrink-0">
                 <div className="inline-flex items-center gap-2 border border-lionzGold text-lionzNavy text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full">
-                  <svg width={13} height={13} viewBox="0 0 24 24" fill="none" stroke="#E0B000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg
+                    width={13}
+                    height={13}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#E0B000"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
@@ -196,9 +209,8 @@ export default function AboutPage() {
 
             {/* Card: map left, content right */}
             <div className="bg-gray-50 rounded-3xl p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden border border-gray-200 h-[420px]">
+              <div className="rounded-2xl overflow-hidden border border-gray-200 h-[260px] sm:h-[420px]">
                 <iframe
                   src="https://maps.google.com/maps?q=5200+NW+33rd+Ave+Suite+200,+Fort+Lauderdale,+FL+33309&output=embed"
                   width="100%"
@@ -217,21 +229,46 @@ export default function AboutPage() {
                   Proudly Serving Miami-Dade, Broward, and Palm Beach Counties
                 </p>
                 <p className="text-gray-600 text-base leading-relaxed mb-8">
-                  <strong>We work across</strong> Southeast Florida, including Miami, Hollywood,
-                  West Palm Beach, Fort Lauderdale, and Boca Raton. Whether you&apos;re a
-                  homeowner, property manager, or contractor,{" "}
-                  <strong>we&apos;re ready to help.</strong>
+                  <strong>We work across </strong> Southeast Florida, including
+                  Miami, Hollywood, West Palm Beach, Fort Lauderdale, and Boca
+                  Raton. Whether you&apos;re a homeowner, property manager, or
+                  contractor, <strong>we&apos;re ready to help.</strong>
                 </p>
 
                 <div className="grid grid-cols-2 gap-3 mb-8">
-                  {["Miami", "Boca Raton", "Fort Lauderdale", "Broward County", "West Palm Beach", "Hollywood"].map((city) => (
-                    <div key={city} className="flex items-center gap-2 border border-lionzGold rounded-full px-4 py-2.5">
-                      <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="#E0B000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {[
+                    { city: "Miami", q: "Miami,+FL" },
+                    { city: "Boca Raton", q: "Boca+Raton,+FL" },
+                    { city: "Fort Lauderdale", q: "Fort+Lauderdale,+FL" },
+                    { city: "Broward County", q: "Broward+County,+FL" },
+                    { city: "West Palm Beach", q: "West+Palm+Beach,+FL" },
+                    { city: "Hollywood", q: "Hollywood,+FL" },
+                  ].map(({ city, q }) => (
+                    <a
+                      key={city}
+                      href={`https://www.google.com/maps/search/roofing+contractor+${q}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 border border-lionzGold rounded-full px-4 py-2.5 hover:bg-lionzGold/10 transition-colors"
+                    >
+                      <svg
+                        width={12}
+                        height={12}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#E0B000"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
                         <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                         <circle cx="12" cy="10" r="3" />
                       </svg>
-                      <span className="text-lionzNavy font-semibold text-sm">{city}</span>
-                    </div>
+                      <span className="text-lionzNavy font-semibold text-sm">
+                        {city}
+                      </span>
+                    </a>
                   ))}
                 </div>
 
@@ -242,11 +279,9 @@ export default function AboutPage() {
                   Get Your Free Quote
                 </Link>
               </div>
-
             </div>
           </div>
         </section>
-
       </main>
       <Footer />
     </>

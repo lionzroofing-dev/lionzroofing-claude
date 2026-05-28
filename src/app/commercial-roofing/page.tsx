@@ -63,7 +63,7 @@ export default function CommercialRoofingPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight">
               <span className="text-lionzGold">Commercial</span> Roofing
             </h1>
           </div>
@@ -189,7 +189,7 @@ export default function CommercialRoofingPage() {
               <img
                 src={imgs.servicesAcross}
                 alt="Commercial Roofing Materials"
-                className="w-full h-[520px] object-cover rounded-3xl"
+                className="w-full h-[280px] sm:h-[380px] md:h-[520px] object-cover rounded-3xl"
               />
             </div>
           </div>

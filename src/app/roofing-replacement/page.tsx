@@ -63,7 +63,7 @@ export default function RoofingReplacementPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-lionzGold leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-lionzGold leading-tight">
               Roof Replacements
             </h1>
           </div>

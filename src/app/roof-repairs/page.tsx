@@ -64,7 +64,7 @@ export default function RoofRepairsPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl mx-auto">
+            <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl mx-auto">
               Roof Repairs In{" "}
               <span className="text-lionzGold">
                 Miami Dade, Broward, And West Palm Beach

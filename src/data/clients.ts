@@ -17,5 +17,5 @@ export const clients: Client[] = [
   { name: "Client 11", logo: "/images/clients/logo-lionz-11.webp" },
   { name: "Client 12", logo: "/images/clients/logo-lionz-12.webp" },
   { name: "Client 13", logo: "/images/clients/logo-lionz-13.webp" },
-  { name: "Client 14", logo: "/images/clients/logo-lionz-13.webp" },
+  { name: "Client 14", logo: "/images/clients/logo-lionz-14.webp" },
 ];

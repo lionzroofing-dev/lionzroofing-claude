@@ -22,7 +22,7 @@
   }
 
   .section-padding {
-    @apply py-16 px-4 md:px-8 lg:px-16;
+    @apply py-10 md:py-16 px-4 md:px-8 lg:px-16;
   }
 
   .no-scrollbar::-webkit-scrollbar { display: none; }

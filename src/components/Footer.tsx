@@ -65,26 +65,27 @@ const COMPANY = {
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Testimonials", href: "/testimonials" },
+  { label: "Services", href: "/services" },
   { label: "Financing", href: "/financing" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
 const serviceLinks = [
-  { label: "Roof Repairs", href: "/roof-repairs" },
-  { label: "Roof Replacements", href: "/roofing-replacement" },
+  { label: "Service Areas", href: "/service-areas" },
   { label: "Residential Roofing", href: "/residential-roofing" },
   { label: "Commercial Roofing", href: "/commercial-roofing" },
+  { label: "Roof Replacements", href: "/roofing-replacement" },
+  { label: "Roof Repairs", href: "/roof-repairs" },
   { label: "Gutter Works", href: "/gutter-works" },
-  { label: "Service Areas", href: "/service-areas" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-lionzNavy text-white">
-      <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
         {/* Brand */}
         <div>
           <div className="mb-4">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Script from "next/script";
 import "@/styles/globals.css";
 
 const montserrat = Montserrat({
@@ -10,23 +11,27 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lionzroofing.com"),
   title: {
-    default: "Lionz Roofing | Fort Lauderdale Roofing Contractors",
+    default: "Lionz Roofing | South Florida Roofing Contractors",
     template: "%s | Lionz Roofing",
   },
   description:
-    "Lionz Roofing — Fort Lauderdale's trusted roofing contractors. Roof repair, replacement, residential and commercial roofing across South Florida. Licensed & insured. Free estimates.",
+    "Lionz Roofing — South Florida's trusted roofing contractors. Roof repair, replacement, residential and commercial roofing across South Florida. Licensed & insured. Free estimates.",
   keywords: [
     "Roofing Fort Lauderdale",
     "Roof Repair Fort Lauderdale",
     "Roof Replacement Florida",
     "Residential Roofing Florida",
     "Commercial Roofing Florida",
-    "Roofing Contractors Fort Lauderdale",
+    "Roofing Contractors South Florida",
     "Emergency Roof Repair Florida",
   ],
   icons: {
     icon: "/favicon.ico",
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
   },
   openGraph: {
     type: "website",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
         url: "/images/hero/hero-roof.webp",
         width: 1200,
         height: 630,
-        alt: "Lionz Roofing — Fort Lauderdale Roofing Contractors",
+        alt: "Lionz Roofing — South Florida Roofing Contractors",
       },
     ],
   },
@@ -72,8 +77,14 @@ const localBusinessSchema = {
     closes: "17:00",
   },
   areaServed: [
-    "Miami", "Fort Lauderdale", "Hollywood", "Boca Raton",
-    "West Palm Beach", "Broward County", "Miami-Dade County", "Palm Beach County",
+    "Miami",
+    "Fort Lauderdale",
+    "Hollywood",
+    "Boca Raton",
+    "West Palm Beach",
+    "Broward County",
+    "Miami-Dade County",
+    "Palm Beach County",
   ],
   sameAs: [
     "https://www.facebook.com/LionzRoofing/",
@@ -88,14 +99,51 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={montserrat.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={montserrat.variable}
+      data-scroll-behavior="smooth"
+    >
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
         />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+
+        {/* Google Analytics 4 */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">{`
+              window.dataLayer=window.dataLayer||[];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js',new Date());
+              gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');
+            `}</Script>
+          </>
+        )}
+
+        {/* Meta Pixel */}
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          <Script id="meta-pixel" strategy="afterInteractive">{`
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init','${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
+            fbq('track','PageView');
+          `}</Script>
+        )}
+      </body>
     </html>
   );
 }
