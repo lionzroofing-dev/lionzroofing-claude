@@ -25,7 +25,7 @@ const checklist = [
 export default function AboutSection() {
   return (
     <section className="bg-white section-padding">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
         {/* Left — Images */}
         <div className="relative">
@@ -70,7 +70,7 @@ export default function AboutSection() {
           </p>
 
           {/* Feature cards */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-2 gap-3 mb-6">
             {features.map((f) => (
               <div
                 key={f.title}

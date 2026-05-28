@@ -29,7 +29,7 @@ export default function BlogPreview() {
         </p>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {blogPosts.slice(0, 3).map((post) => (
             <Link
               key={post.slug}
@@ -55,7 +55,7 @@ export default function BlogPreview() {
               </div>
 
               {/* Content */}
-              <div className="pt-10 pb-6 px-5 flex flex-col flex-1">
+              <div className="pt-8 sm:pt-10 pb-6 px-5 flex flex-col flex-1">
                 <h3 className="text-lionzNavy font-bold text-base leading-snug mb-4 line-clamp-3 flex-1">
                   {post.title}
                 </h3>

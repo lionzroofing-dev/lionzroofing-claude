@@ -124,7 +124,7 @@ const ReelCard = memo(function ReelCard({
 
 /* ─── Main Section ─── */
 export default function ReelsSection() {
-  const [center,    setCenter]    = useState(Math.floor(reels.length / 2));
+  const [center,    setCenter]    = useState(1);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [thumbs,    setThumbs]    = useState<Record<string, string>>({});
@@ -275,14 +275,14 @@ export default function ReelsSection() {
         </div>
 
         {/* Mobile */}
-        <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 -mx-4 no-scrollbar">
+        <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 no-scrollbar">
           {reels.map((reel) => (
             <div key={reel.id} className="snap-center shrink-0">
               <ReelCard
                 reel={reel} width={260} height={460} isCenter
                 isPlaying={playingId === reel.id}
                 isLoading={loadingId === reel.id}
-                thumb={thumbs[reel.id]}
+                thumb={reel.thumbnail || thumbs[reel.id]}
                 onPlay={handlePlay}
                 onVideoStarted={handleVideoStarted}
               />

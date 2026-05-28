@@ -59,7 +59,7 @@ export default function GutterWorksPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-lionzGold leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-lionzGold leading-tight">
               Gutter Works
             </h1>
           </div>
@@ -107,7 +107,7 @@ export default function GutterWorksPage() {
               </p>
 
               {/* Feature bullets + secondary image side by side */}
-              <div className="flex items-stretch gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch gap-4">
                 {/* Left: bordered box with bullets + button */}
                 <div className="flex-1 border border-lionzGold/40 rounded-2xl p-5 flex flex-col gap-4">
                   <ul className="space-y-2">
@@ -125,7 +125,7 @@ export default function GutterWorksPage() {
                   </div>
                 </div>
                 {/* Right: secondary image */}
-                <div className="rounded-2xl overflow-hidden shrink-0 w-44">
+                <div className="rounded-2xl overflow-hidden shrink-0 w-full sm:w-44">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imgs.introSecondary}

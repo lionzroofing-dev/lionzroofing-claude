@@ -29,7 +29,7 @@ export default function BlogPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div className="relative z-10 text-center px-4">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-tight">
               Roofing <span className="text-lionzGold">Blog</span>
             </h1>
           </div>

@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left — About text */}
             <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-lionzDark leading-tight mb-6">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-lionzDark leading-tight mb-6">
                 About <span className="text-lionzGold">Lionz Roofing</span>
               </h1>
               <p className="text-gray-600 text-base leading-relaxed text-justify">
@@ -210,7 +210,7 @@ export default function AboutPage() {
             {/* Card: map left, content right */}
             <div className="bg-gray-50 rounded-3xl p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden border border-gray-200 h-[420px]">
+              <div className="rounded-2xl overflow-hidden border border-gray-200 h-[260px] sm:h-[420px]">
                 <iframe
                   src="https://maps.google.com/maps?q=5200+NW+33rd+Ave+Suite+200,+Fort+Lauderdale,+FL+33309&output=embed"
                   width="100%"

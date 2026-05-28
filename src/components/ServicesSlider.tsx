@@ -88,7 +88,7 @@ export default function ServicesSlider() {
           </button>
 
           {/* Fixed-height content box */}
-          <div className="flex-1 h-[320px] flex flex-col items-center justify-center px-4">
+          <div className="flex-1 h-auto md:h-[320px] flex flex-col items-center justify-center px-4">
             <div
               className="flex flex-col items-center transition-all duration-200 ease-in-out"
               style={{
@@ -101,7 +101,7 @@ export default function ServicesSlider() {
               }}
             >
               <div className="mb-4">{service.icon}</div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-lionzGold mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-lionzGold mb-4">
                 {service.title}
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mb-8">

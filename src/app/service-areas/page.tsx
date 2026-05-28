@@ -146,7 +146,7 @@ export default function ServiceAreasPage() {
           />
           <div className="absolute inset-0 bg-lionzDark/70" />
           <div ref={heroRef} className="fade-up relative z-10 text-center px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight">
               Service <span className="text-lionzGold">Areas</span>
             </h1>
           </div>
@@ -250,7 +250,7 @@ export default function ServiceAreasPage() {
                 />
               </div>
               {/* Floating card */}
-              <div className="absolute -bottom-6 -left-6 bg-lionzNavy rounded-2xl overflow-hidden shadow-2xl w-36 h-36 border-4 border-white">
+              <div className="hidden sm:block absolute -bottom-6 -left-6 bg-lionzNavy rounded-2xl overflow-hidden shadow-2xl w-36 h-36 border-4 border-white">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/service-areas/team.webp"
