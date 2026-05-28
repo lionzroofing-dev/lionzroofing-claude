@@ -186,15 +186,18 @@ export default function ServiceAreasPage() {
               </p>
               <div className="flex flex-wrap gap-2 mb-8">
                 {INTRO_PILLS.map((city) => (
-                  <div
+                  <a
                     key={city}
-                    className="flex items-center gap-1.5 border border-lionzGold rounded-full px-4 py-2"
+                    href={`https://www.google.com/maps/search/roofing+contractor+${city.replace(/\s+/g, "+")},+FL`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 border border-lionzGold rounded-full px-4 py-2 hover:bg-lionzGold/10 transition-colors"
                   >
                     <MapPin size={12} className="text-lionzGold shrink-0" />
                     <span className="text-lionzNavy font-semibold text-sm">
                       {city}
                     </span>
-                  </div>
+                  </a>
                 ))}
               </div>
               <Button href="/contact" variant="primary">
@@ -272,15 +275,18 @@ export default function ServiceAreasPage() {
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               {CITIES.map((city) => (
-                <div
+                <a
                   key={city}
-                  className="flex items-center gap-2 bg-white border border-gray-200 hover:border-lionzGold hover:bg-lionzGold/5 rounded-full px-5 py-2.5 transition-colors cursor-default shadow-sm"
+                  href={`https://www.google.com/maps/search/roofing+contractor+${city.replace(/\s+/g, "+")},+FL`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-white border border-gray-200 hover:border-lionzGold hover:bg-lionzGold/5 rounded-full px-5 py-2.5 transition-colors shadow-sm"
                 >
                   <MapPin size={13} className="text-lionzGold shrink-0" />
                   <span className="text-lionzNavy font-semibold text-sm">
                     {city}
                   </span>
-                </div>
+                </a>
               ))}
             </div>
           </div>

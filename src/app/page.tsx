@@ -9,9 +9,9 @@ import ReelsSection from "@/components/ReelsSection";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Lionz Roofing | Fort Lauderdale Roofing Contractors",
+  title: "Lionz Roofing | South Florida Roofing Contractor",
   description:
-    "Fort Lauderdale's trusted roofing professionals. Roof repair, replacement, residential and commercial roofing services. Licensed, insured, free estimates.",
+    "South Florida's trusted roofing professionals. Roof repair, replacement, residential and commercial roofing services. Licensed, insured, free estimates.",
 };
 
 export default function HomePage() {
@@ -36,7 +36,6 @@ export default function HomePage() {
 
         {/* Reels */}
         <ReelsSection />
-
       </main>
       <Footer />
     </>

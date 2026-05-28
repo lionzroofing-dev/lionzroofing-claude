@@ -34,7 +34,7 @@ export default function BlogPreview() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
+              className="group flex flex-col bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow"
             >
               {/* Image + date badge wrapper */}
               <div className="relative">
@@ -55,8 +55,8 @@ export default function BlogPreview() {
               </div>
 
               {/* Content */}
-              <div className="pt-10 pb-6 px-5">
-                <h3 className="text-lionzNavy font-bold text-base leading-snug mb-4 line-clamp-3">
+              <div className="pt-10 pb-6 px-5 flex flex-col flex-1">
+                <h3 className="text-lionzNavy font-bold text-base leading-snug mb-4 line-clamp-3 flex-1">
                   {post.title}
                 </h3>
                 <span className="text-lionzNavy text-sm font-semibold group-hover:text-lionzGold transition-colors">

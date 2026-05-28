@@ -192,7 +192,7 @@ export default function ReelsSection() {
 
   useEffect(() => {
     visible.forEach(({ reel }, i) => {
-      if (!reel.videoSrc || thumbs[reel.id]) return;
+      if (!reel.videoSrc || reel.thumbnail || thumbs[reel.id]) return;
       const t = setTimeout(() => extractFrame(reel.videoSrc!, reel.id), i * 400);
       return () => clearTimeout(t);
     });
@@ -259,7 +259,7 @@ export default function ReelsSection() {
                     isCenter={offset === 0}
                     isPlaying={playing}
                     isLoading={loadingId === reel.id}
-                    thumb={thumbs[reel.id]}
+                    thumb={reel.thumbnail || thumbs[reel.id]}
                     onPlay={handlePlay}
                     onVideoStarted={handleVideoStarted}
                   />

@@ -11,18 +11,18 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lionz Roofing | Fort Lauderdale Roofing Contractors",
+    default: "Lionz Roofing | South Florida Roofing Contractors",
     template: "%s | Lionz Roofing",
   },
   description:
-    "Lionz Roofing — Fort Lauderdale's trusted roofing contractors. Roof repair, replacement, residential and commercial roofing across South Florida. Licensed & insured. Free estimates.",
+    "Lionz Roofing — South Florida's trusted roofing contractors. Roof repair, replacement, residential and commercial roofing across South Florida. Licensed & insured. Free estimates.",
   keywords: [
     "Roofing Fort Lauderdale",
     "Roof Repair Fort Lauderdale",
     "Roof Replacement Florida",
     "Residential Roofing Florida",
     "Commercial Roofing Florida",
-    "Roofing Contractors Fort Lauderdale",
+    "Roofing Contractors South Florida",
     "Emergency Roof Repair Florida",
   ],
   icons: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/images/hero/hero-roof.webp",
         width: 1200,
         height: 630,
-        alt: "Lionz Roofing — Fort Lauderdale Roofing Contractors",
+        alt: "Lionz Roofing — South Florida Roofing Contractor Roofing Contractors",
       },
     ],
   },
@@ -72,8 +72,14 @@ const localBusinessSchema = {
     closes: "17:00",
   },
   areaServed: [
-    "Miami", "Fort Lauderdale", "Hollywood", "Boca Raton",
-    "West Palm Beach", "Broward County", "Miami-Dade County", "Palm Beach County",
+    "Miami",
+    "Fort Lauderdale",
+    "Hollywood",
+    "Boca Raton",
+    "West Palm Beach",
+    "Broward County",
+    "Miami-Dade County",
+    "Palm Beach County",
   ],
   sameAs: [
     "https://www.facebook.com/LionzRoofing/",
@@ -88,11 +94,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={montserrat.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={montserrat.variable}
+      data-scroll-behavior="smooth"
+    >
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
         />
       </head>
       <body className="font-sans antialiased">{children}</body>
