@@ -49,8 +49,9 @@ export async function POST(req: Request) {
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#f9f9f9;border-radius:8px;">
           <div style="background:#001B44;padding:20px 24px;border-radius:8px 8px 0 0;">
+            <img src="https://lionzroofing.com/images/logo/logo.webp" alt="Lionz Roofing" style="height:50px;width:auto;display:block;margin-bottom:12px;" />
             <h1 style="color:#E0B000;margin:0;font-size:22px;">New Quote Request</h1>
-            <p style="color:#ffffff;margin:4px 0 0;font-size:13px;">lionzroofing.com/contact</p>
+            <p style="color:#ffffff;margin:4px 0 0;font-size:13px;">Submitted via Contact Form</p>
           </div>
           <div style="background:#ffffff;padding:24px;border-radius:0 0 8px 8px;border:1px solid #e0e0e0;border-top:none;">
             <table style="width:100%;border-collapse:collapse;font-size:14px;">
@@ -105,7 +106,7 @@ export async function POST(req: Request) {
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#f9f9f9;border-radius:8px;">
           <div style="background:#001B44;padding:20px 24px;border-radius:8px 8px 0 0;text-align:center;">
-            <h1 style="color:#E0B000;margin:0;font-size:22px;">Lionz Roofing</h1>
+            <img src="https://lionzroofing.com/images/logo/logo.webp" alt="Lionz Roofing" style="height:60px;width:auto;display:block;margin:0 auto 8px;" />
             <p style="color:#ffffff;margin:4px 0 0;font-size:13px;">South Florida Roofing Contractors</p>
           </div>
           <div style="background:#ffffff;padding:32px 24px;border-radius:0 0 8px 8px;border:1px solid #e0e0e0;border-top:none;text-align:center;">
