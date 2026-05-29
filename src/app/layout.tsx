@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.css";
 
 const montserrat = Montserrat({
@@ -143,6 +144,7 @@ export default function RootLayout({
             fbq('track','PageView');
           `}</Script>
         )}
+        <SpeedInsights />
       </body>
     </html>
   );
