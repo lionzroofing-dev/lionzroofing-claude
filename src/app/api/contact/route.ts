@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = "Lionz Roofing <noreply@contacts.lionzroofing.com>";
-const TO_INTERNAL = "contact@lionzroofing.com";
+const TO_INTERNAL = "contacts@lionzroofing.com";
 
 export async function POST(req: Request) {
   try {
@@ -38,8 +38,11 @@ export async function POST(req: Request) {
       timeStyle: "short",
     });
 
+    const withTimeout = <T>(promise: Promise<T>, ms: number): Promise<T> =>
+      Promise.race([promise, new Promise<never>((_, reject) => setTimeout(() => reject(new Error("Email timeout")), ms))]);
+
     // Email 1 — internal notification to Lionz Roofing
-    await resend.emails.send({
+    await withTimeout(resend.emails.send({
       from: FROM,
       to: TO_INTERNAL,
       subject: `New Quote Request — ${firstName} ${lastName}`,
@@ -92,10 +95,10 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-    });
+    }), 10000);
 
     // Email 2 — auto-reply to client
-    await resend.emails.send({
+    await withTimeout(resend.emails.send({
       from: FROM,
       to: email,
       subject: "We received your request — Lionz Roofing",
@@ -123,7 +126,7 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-    });
+    }), 10000);
 
     return NextResponse.json({ success: true });
   } catch (err) {

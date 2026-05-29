@@ -40,20 +40,30 @@ export default function ContactPage() {
       recaptchaToken,
     };
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Submission failed.");
       setStatus("success");
       formRef.current?.reset();
       window.grecaptcha?.reset();
     } catch (err) {
+      clearTimeout(timeout);
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      if (err instanceof Error && err.name === "AbortError") {
+        setErrorMsg("Request timed out. Please try again or call us directly.");
+      } else {
+        setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      }
     }
   }
 
